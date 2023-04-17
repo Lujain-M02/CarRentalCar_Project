@@ -1,0 +1,111 @@
+package com.example.carrental;
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
+import androidx.annotation.Nullable;
+
+import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
+import java.util.List;
+
+public class CarDataBase extends SQLiteOpenHelper {
+    public final static String CAR_TABLE="CAR_TABLE";
+    public static final String ID = "ID";
+    public static final String CAR_NAME = "CAR_NAME";
+    public static final String PASSENGER = "PASSENGER";
+    public static final String TYPE = "TYPE";
+    public static final String PRICE = "PRICE";
+    public static final String IMAGE = "IMAGE";
+    private ByteArrayOutputStream ByteArray;
+    private byte[] imageByte;
+
+
+
+    public CarDataBase(@Nullable Context context) {
+        super(context, CAR_TABLE, null, 1);
+    }
+
+    @Override
+    public void onCreate(SQLiteDatabase sqLiteDatabase) {
+        String CreationTable="CREATE TABLE "+CAR_TABLE+ " (" + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + CAR_NAME + " TEXT, "
+                + PASSENGER + " INT, "
+                + TYPE + " TEXT, "
+                + PRICE + " INT, "
+                + IMAGE + " BLOB )";
+
+        sqLiteDatabase.execSQL(CreationTable);
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+
+    }
+
+    public boolean addOne(Car car){
+        SQLiteDatabase db=getWritableDatabase();
+
+//==================================================for image ==========================================
+        Bitmap ImageToStore=car.getImage();
+        ByteArray=new ByteArrayOutputStream();
+        ImageToStore.compress(Bitmap.CompressFormat.JPEG,100,ByteArray);
+        imageByte =ByteArray.toByteArray();
+//============================================================================================
+
+        ContentValues cv=new ContentValues();
+
+        cv.put(CAR_NAME,car.getName());
+        cv.put(PASSENGER,car.getNumberOfPassenger());
+        cv.put(TYPE,car.getType());
+        cv.put(PRICE,car.getPrice());
+        cv.put(IMAGE,imageByte);
+
+        long insert = db.insert(CAR_TABLE,null,cv);
+
+        if (insert==-1)
+            return false;
+        else{
+            return true;}
+    }
+
+
+
+    public List<Car> getEveryone(){
+        List<Car> returnList = new ArrayList<>();
+        // get data from database
+        String queryString = "Select * from "+ CAR_TABLE;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(queryString, null);
+        if(cursor.moveToFirst()){
+            // loop through cursor results
+            do{
+                int CID = cursor.getInt(0); // car ID
+                String CName = cursor.getString(1); //car name
+                int Cpassenger = cursor.getInt(2);//car number of passenger
+                String Ctype = cursor.getString(3);//car type
+                int Cprice = cursor.getInt(4);//car number of passenger
+                byte[] CimageByte=cursor.getBlob(5);//image in bytes
+                Bitmap Object= BitmapFactory.decodeByteArray(CimageByte,0,CimageByte.length);//convert byte array to bitmap
+
+                Car newCar = new Car(CID, CName, Cpassenger ,Ctype,Cprice,Object);
+                returnList.add(newCar);
+            }while (cursor.moveToNext());
+        } else{
+            // nothing happens. no one is added.
+        }
+        //close
+        cursor.close();
+        db.close();
+        return returnList;
+    }
+
+
+
+
+}
