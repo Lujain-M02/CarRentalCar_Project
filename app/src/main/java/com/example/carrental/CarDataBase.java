@@ -75,6 +75,16 @@ public class CarDataBase extends SQLiteOpenHelper {
     }
 
 
+    public boolean deleteOne(int id){
+        SQLiteDatabase db=getWritableDatabase();
+        String queriString = "DELETE FROM " + CAR_TABLE + " WHERE " + ID + " = " + id;
+        Cursor cursor = db.rawQuery(queriString, null);
+        if (cursor.moveToFirst())
+            return true;
+        else
+           return false;
+    }
+
 
     public List<Car> getEveryone(){
         List<Car> returnList = new ArrayList<>();

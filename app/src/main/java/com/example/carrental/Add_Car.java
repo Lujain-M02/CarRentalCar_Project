@@ -78,7 +78,7 @@ public class Add_Car extends AppCompatActivity {
             Intent ObjectIntent=new Intent();
             ObjectIntent.setType("image/*");
             ObjectIntent.setAction(Intent.ACTION_GET_CONTENT);
-            startActivityForResult(ObjectIntent,PICK_IMAGE_REQUEST);
+          // ?????? startActivityForResult(ObjectIntent,PICK_IMAGE_REQUEST);
         }catch (Exception e){
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 
@@ -32,9 +33,10 @@ public class My_Cars extends AppCompatActivity {
 
     //////===============this method will change in the future to represent car List to the same owner ==================================
     public void getDataToDelete(){
-        MyCarAdapterObject=new MyCar_rv_Adapter((ArrayList<Car>) dataBaseHelper.getEveryone());
+        MyCarAdapterObject=new MyCar_rv_Adapter((ArrayList<Car>) dataBaseHelper.getEveryone() , My_Cars.this);
         rv_MyCar.setHasFixedSize(true);
         rv_MyCar.setLayoutManager(new LinearLayoutManager(this));
         rv_MyCar.setAdapter(MyCarAdapterObject);
     }
 }
+

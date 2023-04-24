@@ -1,10 +1,13 @@
 package com.example.carrental;
 
+
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -34,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         btn_more=findViewById(R.id.btn_more);
         rv_cars=findViewById(R.id.rv_cars);
 
+
         dataBaseHelper = new CarDataBase(MainActivity.this);
         //ShowStudentsOnListView(dataBaseHelper);
         getData();
@@ -56,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
 
     //private void ShowStudentsOnListView(CarDataBase dataBaseHelper) {
     //    CarArrayAdapter = new ArrayAdapter<Car>(MainActivity.this, android.R.layout.simple_list_item_1, dataBaseHelper.getEveryone());

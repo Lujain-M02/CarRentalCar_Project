@@ -4,8 +4,6 @@ import android.graphics.Bitmap;
 
 public class Car {
 
-
-
     private int id;
     private String Name;
     private int NumberOfPassenger;
