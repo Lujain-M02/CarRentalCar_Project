@@ -2,6 +2,7 @@ package com.example.carrental;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +15,7 @@ public class SignupActivity extends AppCompatActivity {
     EditText username, password;
     Button signup, signin;
     DBHelper DB;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,22 +34,20 @@ public class SignupActivity extends AppCompatActivity {
                 String pass = password.getText().toString();
 
 
-                if(user.equals("")||pass.equals(""))
+                if (user.equals("") || pass.equals(""))
                     Toast.makeText(SignupActivity.this, "Please enter all the fields", Toast.LENGTH_SHORT).show();
-                else{
+                else {
                     Boolean check = DB.checkusernamepassword(user, pass);
-                    if (check){
+                    if (check) {
                         Toast.makeText(SignupActivity.this, "Sign in successfully", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(intent);
                     } else {
                         Toast.makeText(SignupActivity.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
                     }
 
                 }
-                        else{
-                            Toast.makeText(SignupActivity.this, "User already exists! please sign in", Toast.LENGTH_SHORT).show();
-                        }
+
                                    }
         });
 
