@@ -68,7 +68,7 @@ public class Add_Car extends AppCompatActivity {
                 startActivity(intent);
 
             }
-        });
+        } );
 
     }
 
