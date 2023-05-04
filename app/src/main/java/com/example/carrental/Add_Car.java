@@ -26,7 +26,7 @@ public class Add_Car extends AppCompatActivity {
     final static int PICK_IMAGE_REQUEST=100;
 
     Uri ImageFilePath;
-//lll
+//lll2
     Bitmap ImageToStore;
 
 
