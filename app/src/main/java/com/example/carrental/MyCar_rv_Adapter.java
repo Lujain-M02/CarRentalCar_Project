@@ -24,6 +24,7 @@ public class MyCar_rv_Adapter extends RecyclerView.Adapter<MyCar_rv_Adapter.rvMy
     int id;
     CarDataBase carDataBase;
     Context context;
+    Car CarObject;
 
 
 
@@ -40,7 +41,7 @@ public class MyCar_rv_Adapter extends RecyclerView.Adapter<MyCar_rv_Adapter.rvMy
 
     @Override
     public void onBindViewHolder(@NonNull rvMyCarViewHolderClass holder, int position) {
-        Car CarObject=CarListToDelete.get(position); // position to be deleted from the array
+        CarObject=CarListToDelete.get(position); // position to be deleted from the array
         holder.myCar_sr_carName.setText(CarObject.getName());
         holder.myCar_sr_iv_cars.setImageBitmap(CarObject.getImage());
 
@@ -73,7 +74,7 @@ public class MyCar_rv_Adapter extends RecyclerView.Adapter<MyCar_rv_Adapter.rvMy
                     id = getAdapterPosition();
                     CarListToDelete.remove(id);
                     carDataBase = new CarDataBase(context);
-                    carDataBase.deleteOne(id);
+                    carDataBase.deleteOne(CarObject.getId());
                     notifyItemRemoved(id);
                     notifyDataSetChanged();
 
