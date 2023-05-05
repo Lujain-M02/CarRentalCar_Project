@@ -3,6 +3,7 @@ package com.example.carrental;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 public class rv_Adapter extends RecyclerView.Adapter<rv_Adapter.rvViewHolderClass> {
 
     ArrayList<Car> CarList;
+
 
     public rv_Adapter(ArrayList<Car> carList) {
         CarList = carList;
@@ -41,6 +43,7 @@ public class rv_Adapter extends RecyclerView.Adapter<rv_Adapter.rvViewHolderClas
 
          TextView sr_tv_carName;
          ImageView sr_iv_cars;
+
 
         public rvViewHolderClass(@NonNull View itemView) {
             super(itemView);

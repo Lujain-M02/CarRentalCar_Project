@@ -56,14 +56,13 @@ public class MyCar_rv_Adapter extends RecyclerView.Adapter<MyCar_rv_Adapter.rvMy
 
         TextView myCar_sr_carName;
         ImageView myCar_sr_iv_cars;
-        Button myCar_sr_delete , BackToHome;
+        Button myCar_sr_delete;;
 
         public rvMyCarViewHolderClass(@NonNull View itemView) {
             super(itemView);
             myCar_sr_carName = itemView.findViewById(R.id.myCar_sr_carName);
             myCar_sr_iv_cars = itemView.findViewById(R.id.myCar_sr_iv_cars);
             myCar_sr_delete = itemView.findViewById(R.id.myCar_sr_delete);
-            BackToHome = itemView.findViewById(R.id.BackToHome);
 
             itemView.setClickable(true);
 
@@ -81,14 +80,6 @@ public class MyCar_rv_Adapter extends RecyclerView.Adapter<MyCar_rv_Adapter.rvMy
                 }
             });
 
-            BackToHome.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(context ,MainActivity.class);
-                    context.startActivity(intent);
-
-                }
-            });
 
         }}}
 

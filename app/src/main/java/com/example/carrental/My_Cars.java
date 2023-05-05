@@ -5,8 +5,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 
 import java.util.ArrayList;
 
@@ -16,17 +19,28 @@ public class My_Cars extends AppCompatActivity {
     MyCar_rv_Adapter MyCarAdapterObject;
     CarDataBase dataBaseHelper;
 
+    Button BackToHome;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_cars);
 
-
+        BackToHome = findViewById(R.id.BackToHome);
         rv_MyCar=findViewById(R.id.rv_MyCar);
 
         dataBaseHelper = new CarDataBase(My_Cars.this);
         //ShowStudentsOnListView(dataBaseHelper);
         getDataToDelete();
+
+
+        BackToHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
