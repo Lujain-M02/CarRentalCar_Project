@@ -37,5 +37,14 @@
         android:layout_marginRight="10dp"
         android:text="Delete" />
 
+    <Button
+        android:id="@+id/BackToHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="670dp"
+        android:layout_marginRight="316dp"
+        android:text="Home" />
+
 
 </RelativeLayout>

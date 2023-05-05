@@ -2,6 +2,7 @@ package com.example.carrental;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -50,17 +52,18 @@ public class MyCar_rv_Adapter extends RecyclerView.Adapter<MyCar_rv_Adapter.rvMy
         return CarListToDelete.size();
     }
 
-    public class rvMyCarViewHolderClass extends RecyclerView.ViewHolder{
+    public class rvMyCarViewHolderClass extends RecyclerView.ViewHolder {
 
         TextView myCar_sr_carName;
         ImageView myCar_sr_iv_cars;
-        Button myCar_sr_delete;
+        Button myCar_sr_delete , BackToHome;
 
         public rvMyCarViewHolderClass(@NonNull View itemView) {
             super(itemView);
-            myCar_sr_carName=itemView.findViewById(R.id.myCar_sr_carName);
-            myCar_sr_iv_cars=itemView.findViewById(R.id.myCar_sr_iv_cars);
-            myCar_sr_delete=itemView.findViewById(R.id.myCar_sr_delete);
+            myCar_sr_carName = itemView.findViewById(R.id.myCar_sr_carName);
+            myCar_sr_iv_cars = itemView.findViewById(R.id.myCar_sr_iv_cars);
+            myCar_sr_delete = itemView.findViewById(R.id.myCar_sr_delete);
+            BackToHome = itemView.findViewById(R.id.BackToHome);
 
             itemView.setClickable(true);
 
@@ -68,7 +71,7 @@ public class MyCar_rv_Adapter extends RecyclerView.Adapter<MyCar_rv_Adapter.rvMy
                 @Override
                 public void onClick(View view) {
 
-                    id = getAdapterPosition() ;
+                    id = getAdapterPosition();
                     CarListToDelete.remove(id);
                     carDataBase = new CarDataBase(context);
                     carDataBase.deleteOne(id);
@@ -78,10 +81,17 @@ public class MyCar_rv_Adapter extends RecyclerView.Adapter<MyCar_rv_Adapter.rvMy
                 }
             });
 
-        }
-    }
+            BackToHome.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(context ,MainActivity.class);
+                    context.startActivity(intent);
 
-}
+                }
+            });
+
+        }}}
+
 
 /*
 package com.example.carrental;
