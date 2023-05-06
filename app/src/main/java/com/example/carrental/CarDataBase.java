@@ -33,15 +33,27 @@ public class CarDataBase extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL("create Table users(username TEXT primary key, password TEXT)");
+        /*sqLiteDatabase.execSQL("create Table users(username TEXT primary key, password TEXT)");
         String CreationTable="CREATE TABLE "+CAR_TABLE+ " (" + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + CAR_NAME + " TEXT, "
                 + PASSENGER + " INT, "
                 + TYPE + " TEXT, "
                 + PRICE + " INT, "
-                + IMAGE + " BLOB )";
+                + IMAGE + " BLOB )";*/
 
-        sqLiteDatabase.execSQL(CreationTable);
+        String createUsersTable = "CREATE TABLE users(username TEXT primary key, password TEXT)";
+        sqLiteDatabase.execSQL(createUsersTable);
+
+        String createCarTable = "CREATE TABLE " + CAR_TABLE + "(" +
+                ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                CAR_NAME + " TEXT, " +
+                PASSENGER + " INT, " +
+                TYPE + " TEXT, " +
+                PRICE + " INT, " +
+                IMAGE + " BLOB)";
+        sqLiteDatabase.execSQL(createCarTable);
+
+        //sqLiteDatabase.execSQL(CreationTable);
     }
 
 
