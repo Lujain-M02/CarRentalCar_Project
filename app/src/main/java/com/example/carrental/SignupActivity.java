@@ -50,7 +50,7 @@ public class SignupActivity extends AppCompatActivity {
                             }
                         }
                         else{
-                            Toast.makeText(SignupActivity.this, "User already exists! please sign in", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SignupActivity.this, "User already exists! please Log in", Toast.LENGTH_SHORT).show();
                         }}
                 }
         });
