@@ -33,6 +33,7 @@ public class CarDataBase extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
+        sqLiteDatabase.execSQL("create Table users(username TEXT primary key, password TEXT)");
         String CreationTable="CREATE TABLE "+CAR_TABLE+ " (" + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + CAR_NAME + " TEXT, "
                 + PASSENGER + " INT, "
@@ -43,10 +44,13 @@ public class CarDataBase extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(CreationTable);
     }
 
+
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
     }
+
+
 
     public boolean addOne(Car car){
         SQLiteDatabase db=getWritableDatabase();
@@ -114,8 +118,37 @@ public class CarDataBase extends SQLiteOpenHelper {
         db.close();
         return returnList;
     }
-
-
-
-
+//-----------------------------------------users----------
+public Boolean insertData(String username, String password){
+    SQLiteDatabase MyDB = this.getWritableDatabase();
+    ContentValues contentValues= new ContentValues();
+    contentValues.put("username", username);
+    contentValues.put("password", password);
+    long result = MyDB.insert("users", null, contentValues);
+    if(result==-1) return false;
+    else
+        return true;
 }
+public Boolean checkusername(String username) {
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        Cursor cursor = MyDB.rawQuery("Select * from users where username = ?", new String[]{username});
+        if (cursor.getCount() > 0)
+            return true;
+        else
+            return false;
+    }
+
+    public Boolean checkusernamepassword(String username, String password){
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        Cursor cursor = MyDB.rawQuery("Select * from users where username = ? and password = ?", new String[] {username,password});
+        if(cursor.getCount()>0)
+            return true;
+        else
+            return false;
+    }
+}
+//---------------- end user -------------------------------------------
+
+
+
+
