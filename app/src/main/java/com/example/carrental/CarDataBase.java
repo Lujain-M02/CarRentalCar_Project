@@ -61,6 +61,7 @@ public class CarDataBase extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS users");
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + CAR_TABLE);
+        onCreate(sqLiteDatabase);
     }
 
 
