@@ -28,7 +28,7 @@ public class CarDataBase extends SQLiteOpenHelper {
 
 
     public CarDataBase(@Nullable Context context) {
-        super(context, CAR_TABLE, null, 1);
+        super(context, CAR_TABLE, null, 2);
     }
 
     @Override
@@ -47,7 +47,7 @@ public class CarDataBase extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-
+        sqLiteDatabase.execSQL("drop Table if exists users");
     }
 
 
