@@ -25,7 +25,7 @@ public class SignupActivity extends AppCompatActivity {
         password = (EditText) findViewById(R.id.password);
         signup = (Button) findViewById(R.id.btnsignup);
         signin = (Button) findViewById(R.id.btnsignin);
-        DB = new CarDataBase(this);
+        DB = new CarDataBase(SignupActivity.this);
 
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
