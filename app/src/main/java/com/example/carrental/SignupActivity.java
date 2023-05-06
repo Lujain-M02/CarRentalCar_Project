@@ -36,19 +36,23 @@ public class SignupActivity extends AppCompatActivity {
 
                 if (user.equals("") || pass.equals(""))
                     Toast.makeText(SignupActivity.this, "Please enter all the fields", Toast.LENGTH_SHORT).show();
-                else {
-                    Boolean check = DB.checkusernamepassword(user, pass);
-                    if (check) {
-                        Toast.makeText(SignupActivity.this, "Sign in successfully", Toast.LENGTH_SHORT).show();
-                        //Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                      //  startActivity(intent);
-                    } else {
-                        Toast.makeText(SignupActivity.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
-                    }
+                else{
 
+                        Boolean checkuser = DB.checkusername(user);
+                        if(checkuser==false){
+                            Boolean insert = DB.insertData(user, pass);
+                            if(insert==true){
+                                Toast.makeText(SignupActivity.this, "Registered successfully", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                                startActivity(intent);
+                            }else{
+                                Toast.makeText(SignupActivity.this, "Registration failed", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                        else{
+                            Toast.makeText(SignupActivity.this, "User already exists! please sign in", Toast.LENGTH_SHORT).show();
+                        }}
                 }
-
-            }
         });
 
         signin.setOnClickListener(new View.OnClickListener() {
