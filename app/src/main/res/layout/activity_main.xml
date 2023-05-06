@@ -19,8 +19,9 @@
 
     <ImageButton
         android:id="@+id/btn_add"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:backgroundTint="#00FFFFFF"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toTopOf="@+id/rv_cars"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,8 +31,9 @@
 
     <ImageButton
         android:id="@+id/btn_more"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:backgroundTint="#00FFFFFF"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toTopOf="@+id/rv_cars"
         app:layout_constraintEnd_toStartOf="@+id/logo"
