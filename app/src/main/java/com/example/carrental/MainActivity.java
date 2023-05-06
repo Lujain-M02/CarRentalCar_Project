@@ -12,13 +12,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    Button btn_add;
-    Button btn_more;
+    ImageButton btn_add;
+    ImageButton btn_more;
 
     //ListView lv_carList;
 
