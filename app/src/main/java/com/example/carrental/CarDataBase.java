@@ -24,12 +24,18 @@ public class CarDataBase extends SQLiteOpenHelper {
     public static final String IMAGE = "IMAGE";
     private ByteArrayOutputStream ByteArray;
     private byte[] imageByte;
+    public static final String DBNAME = "Login.db";
+    public static final String TABLENAME = "users";
+    public static final String COL1 = "username";
+    public static final String COL2 = "password";
 
 
 
     public CarDataBase(@Nullable Context context) {
-        super(context, CAR_TABLE, null, 2);
+        super(context, CAR_TABLE, null, 1);
     }
+
+
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
@@ -41,7 +47,7 @@ public class CarDataBase extends SQLiteOpenHelper {
                 + PRICE + " INT, "
                 + IMAGE + " BLOB )";*/
 
-        String createUsersTable = "CREATE TABLE users(username TEXT primary key, password TEXT)";
+        String createUsersTable =  "create Table " + TABLENAME + "(" + COL1 + " TEXT primary key, " + COL2 + " TEXT)";
         sqLiteDatabase.execSQL(createUsersTable);
 
         String createCarTable = "CREATE TABLE " + CAR_TABLE + "(" +
