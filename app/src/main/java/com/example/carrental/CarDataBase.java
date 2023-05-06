@@ -32,7 +32,7 @@ public class CarDataBase extends SQLiteOpenHelper {
 
 
     public CarDataBase(@Nullable Context context) {
-        super(context, CAR_TABLE, null, 1);
+        super(context, CAR_TABLE, null, 2);
     }
 
 
