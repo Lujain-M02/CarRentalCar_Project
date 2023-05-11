@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     rv_Adapter AdapterObject;
     ArrayAdapter CarArrayAdapter;
     CarDataBase dataBaseHelper;
-    Button linksign;
+    //Button linksign;
 
 
     @SuppressLint("MissingInflatedId")
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         btn_add=findViewById(R.id.btn_add);
         btn_more=findViewById(R.id.btn_more);
         rv_cars=findViewById(R.id.rv_cars);
-        linksign = findViewById(R.id.linksign);
+        //linksign = findViewById(R.id.linksign);
 
 
         dataBaseHelper = new CarDataBase(MainActivity.this);
@@ -63,14 +63,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        linksign.setOnClickListener(new View.OnClickListener() {
+        /*linksign.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),SignupActivity.class);
                 startActivity(intent);
 
             }
-        });
+        });*/
     }
 
 
