@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import java.util.ArrayList;
 
@@ -19,7 +20,7 @@ public class My_Cars extends AppCompatActivity {
     MyCar_rv_Adapter MyCarAdapterObject;
     CarDataBase dataBaseHelper;
 
-    Button BackToHome;
+    ImageButton BackToHome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
