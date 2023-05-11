@@ -50,22 +50,39 @@ public class Add_Car extends AppCompatActivity {
         btn_addcar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                String CarName = et_name.getText().toString();
+                String PassNum = et_passenger.getText().toString();
+                String type = et_type.getText().toString();
+                String price = et_price.getText().toString();
+
                 Car c1 ;
-                try {
-                     c1 = new Car(1, et_name.getText().toString(), Integer.parseInt(et_passenger.getText().toString()), et_type.getText().toString(),Integer.parseInt(et_price.getText().toString()),ImageToStore);
-                    Toast.makeText(Add_Car.this, c1.toString(), Toast.LENGTH_SHORT).show();
-                }catch (Exception e){
-                    Toast.makeText(Add_Car.this, "fill the information", Toast.LENGTH_SHORT).show();
-                    c1 = new Car(-1, "none", 0, "none",0,null);
 
+                if(CarName.equals("")) {
+                    Toast.makeText(Add_Car.this, "Please enter the Care Name", Toast.LENGTH_SHORT).show();
+                }else if (PassNum.equals("")) {
+                    Toast.makeText(Add_Car.this, "Please enter the Number of Passenger", Toast.LENGTH_SHORT).show();
+                } else if (type.equals("")) {
+                    Toast.makeText(Add_Car.this, "Please enter the Type of the car", Toast.LENGTH_SHORT).show();
+                }else if (price.equals("")) {
+                    Toast.makeText(Add_Car.this, "Please enter the Price of the car", Toast.LENGTH_SHORT).show();
+                }else {
+                    try {
+                        c1 = new Car(1, et_name.getText().toString(), Integer.parseInt(et_passenger.getText().toString()), et_type.getText().toString(), Integer.parseInt(et_price.getText().toString()), ImageToStore);
+                        Toast.makeText(Add_Car.this, c1.toString(), Toast.LENGTH_SHORT).show();
+                    } catch (Exception e) {
+                        Toast.makeText(Add_Car.this, "fill the information", Toast.LENGTH_SHORT).show();
+                        c1 = new Car(-1, "none", 0, "none", 0, null);
+
+                    }
+                    CarDataBase DB = new CarDataBase(Add_Car.this);
+                    boolean success = DB.addOne(c1);
+                    Toast.makeText(Add_Car.this, "mm: " + success, Toast.LENGTH_SHORT).show();
+
+
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
                 }
-                CarDataBase DB=new CarDataBase(Add_Car.this);
-                boolean success= DB.addOne(c1);
-                Toast.makeText(Add_Car.this, "mm: "+success, Toast.LENGTH_SHORT).show();
-                
-
-                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-                startActivity(intent);
 
             }
         } );
