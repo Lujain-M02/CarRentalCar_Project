@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -28,6 +29,7 @@ public class Add_Car extends AppCompatActivity {
     Uri ImageFilePath;
 //lll2
     Bitmap ImageToStore;
+    ImageButton btn_back;
 
 
     ArrayAdapter<Car> CostumerArray;
@@ -45,6 +47,7 @@ public class Add_Car extends AppCompatActivity {
         et_passenger=findViewById(R.id.et_passenger);
         et_price=findViewById(R.id.et_price);
         iv_image=findViewById(R.id.iv_image);
+        btn_back=findViewById(R.id.btn_back);
 
 
         btn_addcar.setOnClickListener(new View.OnClickListener() {
@@ -88,7 +91,13 @@ public class Add_Car extends AppCompatActivity {
 
             }
         } );
-
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 ///this 2 method for uploading image from gallary on the Emulator **************************************************************
