@@ -5,38 +5,43 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp"
-    tools:context=".LoginActivity">
+    tools:context=".LoginActivity"
+    android:background="@drawable/bg_log">
 
     <ImageView
         android:id="@+id/logo"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="130dp"
+        android:layout_marginEnd="127dp"
         app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="80dp"
         app:srcCompat="@drawable/logocar" />
 
     <EditText
         android:id="@+id/username1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="300dp"
         android:hint="User Name" />
 
     <EditText
         android:id="@+id/password1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Password"
-        android:layout_marginTop="50dp"
-        android:layout_below="@+id/username1"/>
+        android:layout_below="@+id/username1"
+        android:layout_marginTop="54dp"
+        android:hint="Password" />
 
     <Button
         android:id="@+id/btnsignin1"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/password1"
-        android:layout_marginTop="70dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="105dp"
+        android:layout_marginEnd="150dp"
         android:backgroundTint="#3F51B5"
-        android:text="Sign in" />
+        android:text="Sign in"
+        app:cornerRadius="100dp" />
 </RelativeLayout>
