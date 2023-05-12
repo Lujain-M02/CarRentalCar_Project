@@ -28,7 +28,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btn_login"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:cornerRadius="50dp"
+        android:drawableRight="@drawable/username"
+        android:drawableTint="@color/white"
+        />
 
     <Button
         android:id="@+id/btn_login"
@@ -40,5 +44,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/btn_singin"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:cornerRadius="50dp"
+        android:drawableRight="@drawable/login"
+        android:drawableTint="@color/white"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
