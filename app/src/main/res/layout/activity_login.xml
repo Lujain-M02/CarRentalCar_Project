@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,30 +8,29 @@
     tools:context=".LoginActivity"
     android:background="@drawable/bg_log">
 
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="127dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="80dp"
-        app:srcCompat="@drawable/logocar" />
+
 
     <EditText
         android:id="@+id/username1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="300dp"
-        android:hint="User Name" />
+        android:drawableLeft="@drawable/username"
+        android:hint="User Name"
+        app:layout_constraintBottom_toBottomOf="@+id/btnsignin1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/password1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/username1"
-        android:layout_marginTop="54dp"
-        android:hint="Password" />
+        android:layout_marginTop="24dp"
+        android:drawableLeft="@drawable/pass"
+        android:hint="Password"
+        app:layout_constraintTop_toBottomOf="@+id/username1"
+        tools:layout_editor_absoluteX="35dp" />
 
     <Button
         android:id="@+id/btnsignin1"
@@ -39,9 +38,22 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/password1"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="105dp"
-        android:layout_marginEnd="150dp"
         android:backgroundTint="#3F51B5"
         android:text="Sign in"
-        app:cornerRadius="100dp" />
-</RelativeLayout>
+        app:cornerRadius="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/password1"/>
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:layout_constraintBottom_toTopOf="@+id/username1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logocar" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
