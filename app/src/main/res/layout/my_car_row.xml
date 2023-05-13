@@ -35,7 +35,12 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="30dp"
         android:layout_marginRight="10dp"
-        android:text="Delete" />
+        android:backgroundTint="#3F51B5"
+        app:cornerRadius="50dp"
+        android:text="Delete"
+        android:drawableLeft="@drawable/ic_action_delete"
+        android:drawableTint="@color/white"
+        />
 
 
 
