@@ -9,6 +9,8 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -46,6 +48,11 @@ public class Add_Car extends AppCompatActivity {
         et_price=findViewById(R.id.et_price);
         iv_image=findViewById(R.id.iv_image);
 
+        et_name.addTextChangedListener(addCarTextWatcher);
+        et_type.addTextChangedListener(addCarTextWatcher);
+        et_passenger.addTextChangedListener(addCarTextWatcher);
+        et_price.addTextChangedListener(addCarTextWatcher);
+
 
         btn_addcar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,7 +63,11 @@ public class Add_Car extends AppCompatActivity {
                 String type = et_type.getText().toString();
                 String price = et_price.getText().toString();
 
+
                 Car c1 ;
+
+
+
 
                 if(CarName.equals("")) {
                     Toast.makeText(Add_Car.this, "Please enter the Care Name", Toast.LENGTH_SHORT).show();
@@ -67,6 +78,8 @@ public class Add_Car extends AppCompatActivity {
                 }else if (price.equals("")) {
                     Toast.makeText(Add_Car.this, "Please enter the Price of the car", Toast.LENGTH_SHORT).show();
                 }else {
+
+
                     try {
                         c1 = new Car(1, et_name.getText().toString(), Integer.parseInt(et_passenger.getText().toString()), et_type.getText().toString(), Integer.parseInt(et_price.getText().toString()), ImageToStore);
                         //Toast.makeText(Add_Car.this, c1.toString(), Toast.LENGTH_SHORT).show();
@@ -90,6 +103,29 @@ public class Add_Car extends AppCompatActivity {
         } );
 
     }
+
+    TextWatcher addCarTextWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            String CarName = et_name.getText().toString().trim();
+            String PassNum = et_passenger.getText().toString().trim();
+            String type = et_type.getText().toString().trim();
+            String price = et_price.getText().toString().trim();
+
+            btn_addcar.setEnabled(!CarName.isEmpty() && !PassNum.isEmpty() && !type.isEmpty() && !price.isEmpty());
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+
+        }
+    };
 
 ///this 2 method for uploading image from gallary on the Emulator **************************************************************
     public void ChooseImage(View ObjectView){
