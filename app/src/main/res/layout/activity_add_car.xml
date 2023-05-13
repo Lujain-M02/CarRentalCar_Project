@@ -91,7 +91,7 @@
         android:src="@drawable/image_add"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_price"
-        app:tint="#3C5C83" />
+        />
 
     <Button
         android:id="@+id/btn_addcar"
@@ -131,7 +131,7 @@
         android:drawablePadding="2dp"
         android:text="To Upload Image Click\nOn The Plus Button"
         android:textColor="#000000"
-        android:textSize="20sp"
+        android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/btn_addcar"
         app:layout_constraintEnd_toStartOf="@+id/iv_image"
         app:layout_constraintStart_toStartOf="parent"
