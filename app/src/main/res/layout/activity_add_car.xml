@@ -13,12 +13,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Add the Car Information:"
-        android:textColor="#3F51B5"
+        android:textColor="#3C5C83"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:textStyle="bold"
         />
 
     <EditText
@@ -33,7 +32,8 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        android:drawableLeft="@drawable/car_icons"/>
 
     <EditText
         android:id="@+id/et_passenger"
@@ -47,7 +47,8 @@
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_name" />
+        app:layout_constraintTop_toBottomOf="@+id/et_name"
+        android:drawableLeft="@drawable/username"/>
 
     <EditText
         android:id="@+id/et_type"
@@ -62,7 +63,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_passenger" />
+        app:layout_constraintTop_toBottomOf="@+id/et_passenger"
+        android:drawableLeft="@drawable/type"/>
 
     <EditText
         android:id="@+id/et_price"
@@ -76,31 +78,38 @@
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_type" />
+        app:layout_constraintTop_toBottomOf="@+id/et_type"
+        android:drawableLeft="@drawable/price"/>
 
     <ImageView
         android:id="@+id/iv_image"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:onClick="ChooseImage"
         android:scaleType="centerCrop"
         android:src="@drawable/image_add"
-        app:layout_constraintStart_toStartOf="parent"
+        android:tint="#3C5C83"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_price" />
 
     <Button
         android:id="@+id/btn_addcar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="#3F51B5"
+        android:backgroundTint="#3C5C83"
+        android:shadowColor="#A6A6A6"
+        android:shadowDx="5"
+        android:shadowDy="4"
+        android:shadowRadius="4"
         android:text="Add the Car"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_image"
         app:cornerRadius="50dp"
+        android:drawableLeft="@drawable/image_add"
+        android:drawableTint="@color/white"
         />
 
     <ImageButton
@@ -112,6 +121,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/arrow" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="To Upload Image Click\nOn The Plus Button"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_addcar"
+        app:layout_constraintEnd_toStartOf="@+id/iv_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_price"
+        android:drawableTop="@drawable/image"
+        android:drawablePadding="2dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
