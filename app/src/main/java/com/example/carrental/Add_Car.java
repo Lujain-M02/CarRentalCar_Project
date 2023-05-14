@@ -51,10 +51,6 @@ public class Add_Car extends AppCompatActivity {
         iv_image=findViewById(R.id.iv_image);
         btn_back=findViewById(R.id.btn_back);
 
-        et_name.addTextChangedListener(addCarTextWatcher);
-        et_type.addTextChangedListener(addCarTextWatcher);
-        et_passenger.addTextChangedListener(addCarTextWatcher);
-        et_price.addTextChangedListener(addCarTextWatcher);
 
 
         btn_addcar.setOnClickListener(new View.OnClickListener() {
@@ -115,28 +111,6 @@ public class Add_Car extends AppCompatActivity {
         });
     }
 
-    TextWatcher addCarTextWatcher = new TextWatcher() {
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-        }
-
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-            String CarName = et_name.getText().toString().trim();
-            String PassNum = et_passenger.getText().toString().trim();
-            String type = et_type.getText().toString().trim();
-            String price = et_price.getText().toString().trim();
-
-            btn_addcar.setEnabled(!CarName.isEmpty() && !PassNum.isEmpty() && !type.isEmpty() && !price.isEmpty());
-
-        }
-
-        @Override
-        public void afterTextChanged(Editable s) {
-
-        }
-    };
 
 ///this 2 method for uploading image from gallary on the Emulator **************************************************************
     public void ChooseImage(View ObjectView){
