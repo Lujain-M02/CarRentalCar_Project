@@ -80,6 +80,8 @@ public class Add_Car extends AppCompatActivity {
                     Toast.makeText(Add_Car.this, "Please enter the Type of the car", Toast.LENGTH_SHORT).show();
                 }else if (price.equals("")) {
                     Toast.makeText(Add_Car.this, "Please enter the Price of the car", Toast.LENGTH_SHORT).show();
+                }else if (ImageToStore==null) {
+                    Toast.makeText(Add_Car.this, "Please upload image", Toast.LENGTH_SHORT).show();
                 }else {
 
 
