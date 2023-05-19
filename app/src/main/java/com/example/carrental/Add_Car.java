@@ -52,6 +52,10 @@ public class Add_Car extends AppCompatActivity {
         btn_back=findViewById(R.id.btn_back);
 
 
+        //logged in username
+        String UserName=getIntent().getStringExtra("UserName");
+
+
 
         btn_addcar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,6 +101,7 @@ public class Add_Car extends AppCompatActivity {
 
 
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    intent.putExtra( "UserName",UserName);
                     startActivity(intent);
                 }
 
@@ -106,6 +111,7 @@ public class Add_Car extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                intent.putExtra( "UserName",UserName);
                 startActivity(intent);
             }
         });
