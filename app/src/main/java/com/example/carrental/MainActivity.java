@@ -28,6 +28,8 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
     CarDataBase dataBaseHelper;
     //Button linksign;
 
+    String UserName;
+    ArrayList<Car> viewList=new ArrayList<>();
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -43,11 +45,12 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
 
 
         //logged in username information
-        String UserName=getIntent().getStringExtra("UserName");
+        UserName=getIntent().getStringExtra("UserName");
         TextView textView=findViewById(R.id.textView);
         textView.setText(UserName);
 
         dataBaseHelper = new CarDataBase(MainActivity.this);
+        viewList=(ArrayList<Car>)dataBaseHelper.getEveryone();
         //ShowStudentsOnListView(dataBaseHelper);
         getData();
 
@@ -90,7 +93,8 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
 
 
     public void getData(){
-        AdapterObject=new rv_Adapter(MainActivity.this,(ArrayList<Car>) dataBaseHelper.getEveryone());
+       AdapterObject=new rv_Adapter(MainActivity.this,viewList,this);
+        //AdapterObject=new rv_Adapter(MainActivity.this,(ArrayList<Car>) dataBaseHelper.getEveryone(),this);
         rv_cars.setHasFixedSize(true);
         rv_cars.setLayoutManager(new LinearLayoutManager(this));
         rv_cars.setAdapter(AdapterObject);
@@ -98,6 +102,17 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
 
     @Override
     public void onItemClick(int position) {
+        Intent intent = new Intent(getApplicationContext(),View_page.class);
+        intent.putExtra( "UserName",UserName);
+        intent.putExtra( "carID",viewList.get(position).getId());
+        intent.putExtra( "carName",viewList.get(position).getName());
+        intent.putExtra( "carType",viewList.get(position).getType());
+        intent.putExtra( "carPassenger",viewList.get(position).getNumberOfPassenger());
+        intent.putExtra( "carPrice",viewList.get(position).getPrice());
+        intent.putExtra( "carOwnerName",viewList.get(position).getOwner_name());
+        //intent.putExtra( "carImage",viewList.get(position).getImage());
+        startActivity(intent);
+
 
     }
 }

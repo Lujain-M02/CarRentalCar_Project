@@ -14,13 +14,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class rv_Adapter extends RecyclerView.Adapter<rv_Adapter.rvViewHolderClass> {
-
+    private final RecyclerViewInterface recyclerViewInterface;
     ArrayList<Car> CarList;
     Context context;
 
-    public rv_Adapter(Context context, ArrayList<Car> carList) {
+    public rv_Adapter(Context context, ArrayList<Car> carList,RecyclerViewInterface recyclerViewInterface) {
         this.context=context;
         CarList = carList;
+        this.recyclerViewInterface=recyclerViewInterface;
     }
 
     @NonNull
@@ -28,7 +29,7 @@ public class rv_Adapter extends RecyclerView.Adapter<rv_Adapter.rvViewHolderClas
     public rvViewHolderClass onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater=LayoutInflater.from(context);
         View view=inflater.inflate(R.layout.single_row_cars,parent,false);
-        return new rvViewHolderClass(view);
+        return new rvViewHolderClass(view,recyclerViewInterface);
         //return new rvViewHolderClass(LayoutInflater.from(parent.getContext()).inflate(R.layout.single_row_cars,parent,false));
     }
 
@@ -50,10 +51,24 @@ public class rv_Adapter extends RecyclerView.Adapter<rv_Adapter.rvViewHolderClas
          ImageView sr_iv_cars;
 
 
-        public rvViewHolderClass(@NonNull View itemView) {
+        public rvViewHolderClass(@NonNull View itemView,RecyclerViewInterface recyclerViewInterface) {
             super(itemView);
             sr_tv_carName=itemView.findViewById(R.id.sr_tv_carName);
             sr_iv_cars=itemView.findViewById(R.id.sr_iv_cars);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (recyclerViewInterface!=null){
+                        int pos=getAdapterPosition();
+
+                        if(pos!=RecyclerView.NO_POSITION){
+                            recyclerViewInterface.onItemClick(pos);
+                        }
+
+                    }
+                }
+            });
 
         }
     }
