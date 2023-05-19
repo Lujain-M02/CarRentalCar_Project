@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -40,6 +41,12 @@ public class MainActivity extends AppCompatActivity {
         //linksign = findViewById(R.id.linksign);
 
 
+
+        //logged in username information
+        String UserName=getIntent().getStringExtra("UserName");
+        TextView textView=findViewById(R.id.textView);
+        textView.setText(UserName);
+
         dataBaseHelper = new CarDataBase(MainActivity.this);
         //ShowStudentsOnListView(dataBaseHelper);
         getData();
@@ -50,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),Add_Car.class);
+                intent.putExtra( "UserName",UserName);
                 startActivity(intent);
 
             }
@@ -59,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),More_page.class);
+                intent.putExtra( "UserName",UserName);
                 startActivity(intent);
             }
         });

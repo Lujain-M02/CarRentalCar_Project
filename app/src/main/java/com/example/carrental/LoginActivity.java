@@ -38,6 +38,7 @@ public class LoginActivity extends AppCompatActivity {
                     if(checkuserpass==true){
                         Toast.makeText(LoginActivity.this, "Sign in successfully", Toast.LENGTH_SHORT).show();
                         Intent intent  = new Intent(getApplicationContext(), MainActivity.class);
+                        intent.putExtra( "UserName",user);
                         startActivity(intent);
                     }else{
                         Toast.makeText(LoginActivity.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();

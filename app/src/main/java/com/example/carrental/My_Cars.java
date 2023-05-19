@@ -30,6 +30,9 @@ public class My_Cars extends AppCompatActivity {
         BackToHome = findViewById(R.id.BackToHome);
         rv_MyCar=findViewById(R.id.rv_MyCar);
 
+        //logged in username
+        String UserName=getIntent().getStringExtra("UserName");
+
         dataBaseHelper = new CarDataBase(My_Cars.this);
         //ShowStudentsOnListView(dataBaseHelper);
         getDataToDelete();
@@ -39,6 +42,7 @@ public class My_Cars extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                intent.putExtra( "UserName",UserName);
                 startActivity(intent);
             }
         });
