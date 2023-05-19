@@ -31,6 +31,10 @@ public class CarDataBase extends SQLiteOpenHelper {
     public static final String COL2 = "password";
 
 
+    public static final String RENTAL_APPLICATION_TABLE = "RENTAL_APPLICATION";
+    public static final String RENTER_NAME = "RENTER_NAME";
+    public static final String CAR_ID = "CAR_ID";
+
 
     public CarDataBase(@Nullable Context context) {
         super(context, CAR_TABLE, null, 2);
@@ -62,14 +66,23 @@ public class CarDataBase extends SQLiteOpenHelper {
                 ")";
         sqLiteDatabase.execSQL(createCarTable);
 
+        String createRentalApplicationTable = "CREATE TABLE " + RENTAL_APPLICATION_TABLE + "(" +
+                ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                RENTER_NAME + " TEXT REFERENCES " + TABLENAME + "(" + COL1 + "), " +
+                CAR_ID + " INTEGER REFERENCES " + CAR_TABLE + "(" + ID + ")" +
+                ")";
+        sqLiteDatabase.execSQL(createRentalApplicationTable);
+
+
         //sqLiteDatabase.execSQL(CreationTable);
     }
 
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS users");
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+ TABLENAME);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + CAR_TABLE);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + RENTAL_APPLICATION_TABLE);
         onCreate(sqLiteDatabase);
     }
 
