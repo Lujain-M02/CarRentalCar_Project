@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements RecyclerViewInterface{
     ImageButton btn_add;
     ImageButton btn_more;
 
@@ -90,12 +90,16 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void getData(){
-        AdapterObject=new rv_Adapter((ArrayList<Car>) dataBaseHelper.getEveryone());
+        AdapterObject=new rv_Adapter(MainActivity.this,(ArrayList<Car>) dataBaseHelper.getEveryone());
         rv_cars.setHasFixedSize(true);
         rv_cars.setLayoutManager(new LinearLayoutManager(this));
         rv_cars.setAdapter(AdapterObject);
     }
 
+    @Override
+    public void onItemClick(int position) {
+
+    }
 }
 
 

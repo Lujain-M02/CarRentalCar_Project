@@ -1,5 +1,6 @@
 package com.example.carrental;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,16 +16,20 @@ import java.util.ArrayList;
 public class rv_Adapter extends RecyclerView.Adapter<rv_Adapter.rvViewHolderClass> {
 
     ArrayList<Car> CarList;
+    Context context;
 
-
-    public rv_Adapter(ArrayList<Car> carList) {
+    public rv_Adapter(Context context, ArrayList<Car> carList) {
+        this.context=context;
         CarList = carList;
     }
 
     @NonNull
     @Override
     public rvViewHolderClass onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new rvViewHolderClass(LayoutInflater.from(parent.getContext()).inflate(R.layout.single_row_cars,parent,false));
+        LayoutInflater inflater=LayoutInflater.from(context);
+        View view=inflater.inflate(R.layout.single_row_cars,parent,false);
+        return new rvViewHolderClass(view);
+        //return new rvViewHolderClass(LayoutInflater.from(parent.getContext()).inflate(R.layout.single_row_cars,parent,false));
     }
 
     @Override
