@@ -86,11 +86,11 @@ public class Add_Car extends AppCompatActivity {
 
 
                     try {
-                        c1 = new Car(1, et_name.getText().toString(), Integer.parseInt(et_passenger.getText().toString()), et_type.getText().toString(), Integer.parseInt(et_price.getText().toString()), ImageToStore);
+                        c1 = new Car(1, et_name.getText().toString(), Integer.parseInt(et_passenger.getText().toString()), et_type.getText().toString(), Integer.parseInt(et_price.getText().toString()), ImageToStore,UserName);
                         //Toast.makeText(Add_Car.this, c1.toString(), Toast.LENGTH_SHORT).show();
                     } catch (Exception e) {
                         Toast.makeText(Add_Car.this, "fill the information", Toast.LENGTH_SHORT).show();
-                        c1 = new Car(-1, "none", 0, "none", 0, null);
+                        c1 = new Car(-1, "none", 0, "none", 0, null,"none");
 
                     }
                     CarDataBase DB = new CarDataBase(Add_Car.this);

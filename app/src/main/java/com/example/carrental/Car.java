@@ -13,14 +13,27 @@ public class Car {
 
     private Bitmap image;
 
-    public Car(int id, String name, int numberOfPassenger, String type, int price, Bitmap image) {
+    private String owner_name;
+    public Car(int id, String name, int numberOfPassenger, String type, int price, Bitmap image, String owner_name) {
         this.id = id;
         Name = name;
         NumberOfPassenger = numberOfPassenger;
         this.type = type;
         this.price = price;
         this.image = image;
+        this.owner_name = owner_name;
     }
+
+
+
+    /*public Car(int id, String name, int numberOfPassenger, String type, int price, Bitmap image) {
+        this.id = id;
+        Name = name;
+        NumberOfPassenger = numberOfPassenger;
+        this.type = type;
+        this.price = price;
+        this.image = image;
+    }*/
 
 
     public int getId() {
@@ -69,7 +82,13 @@ public class Car {
     public void setImage(Bitmap image) {
         this.image = image;
     }
+    public String getOwner_name() {
+        return owner_name;
+    }
 
+    public void setOwner_name(String owner_name) {
+        this.owner_name = owner_name;
+    }
     @Override
     public String toString() {
         return "" + Name;

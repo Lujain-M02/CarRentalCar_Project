@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class My_Cars extends AppCompatActivity {
 
@@ -21,6 +22,7 @@ public class My_Cars extends AppCompatActivity {
     CarDataBase dataBaseHelper;
 
     ImageButton BackToHome;
+    String UserName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +33,7 @@ public class My_Cars extends AppCompatActivity {
         rv_MyCar=findViewById(R.id.rv_MyCar);
 
         //logged in username
-        String UserName=getIntent().getStringExtra("UserName");
+        UserName=getIntent().getStringExtra("UserName");
 
         dataBaseHelper = new CarDataBase(My_Cars.this);
         //ShowStudentsOnListView(dataBaseHelper);
@@ -51,8 +53,17 @@ public class My_Cars extends AppCompatActivity {
 
 
     //////===============this method will change in the future to represent car List to the same owner ==================================
+    /////////this change has been implemented succesfully
     public void getDataToDelete(){
-        MyCarAdapterObject=new MyCar_rv_Adapter((ArrayList<Car>) dataBaseHelper.getEveryone() , My_Cars.this);
+        List<Car> ViewList = new ArrayList<>();
+        for(int i=0;i<dataBaseHelper.getEveryone().size();i++){//this for loop to represent a cars that owned by the logged in user
+            if(dataBaseHelper.getEveryone().get(i).getOwner_name().equals(UserName)){
+                ViewList.add(dataBaseHelper.getEveryone().get(i));
+            }
+        }
+        MyCarAdapterObject=new MyCar_rv_Adapter((ArrayList<Car>) ViewList , My_Cars.this);
+
+        //MyCarAdapterObject=new MyCar_rv_Adapter((ArrayList<Car>) dataBaseHelper.getEveryone() , My_Cars.this);
         rv_MyCar.setHasFixedSize(true);
         rv_MyCar.setLayoutManager(new LinearLayoutManager(this));
         rv_MyCar.setAdapter(MyCarAdapterObject);

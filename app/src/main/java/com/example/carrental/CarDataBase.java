@@ -56,7 +56,9 @@ public class CarDataBase extends SQLiteOpenHelper {
                 PASSENGER + " INT, " +
                 TYPE + " TEXT, " +
                 PRICE + " INT, " +
-                IMAGE + " BLOB)";
+                IMAGE + " BLOB, " +
+                COL1 + " TEXT REFERENCES " + TABLENAME + "(" + COL1 + ")" +
+                ")";
         sqLiteDatabase.execSQL(createCarTable);
 
         //sqLiteDatabase.execSQL(CreationTable);
@@ -89,6 +91,7 @@ public class CarDataBase extends SQLiteOpenHelper {
         cv.put(TYPE,car.getType());
         cv.put(PRICE,car.getPrice());
         cv.put(IMAGE,imageByte);
+        cv.put(COL1,car.getOwner_name());
 
         long insert = db.insert(CAR_TABLE,null,cv);
 
@@ -124,8 +127,9 @@ public class CarDataBase extends SQLiteOpenHelper {
                 int Cprice = cursor.getInt(4);//car number of passenger
                 byte[] CimageByte=cursor.getBlob(5);//image in bytes
                 Bitmap Object= BitmapFactory.decodeByteArray(CimageByte,0,CimageByte.length);//convert byte array to bitmap
+                String Cowner_name = cursor.getString(6); //car name
 
-                Car newCar = new Car(CID, CName, Cpassenger ,Ctype,Cprice,Object);
+                Car newCar = new Car(CID, CName, Cpassenger ,Ctype,Cprice,Object,Cowner_name);
                 returnList.add(newCar);
             }while (cursor.moveToNext());
         } else{
