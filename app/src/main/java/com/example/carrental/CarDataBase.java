@@ -22,6 +22,7 @@ public class CarDataBase extends SQLiteOpenHelper {
     public static final String TYPE = "TYPE";
     public static final String PRICE = "PRICE";
     public static final String IMAGE = "IMAGE";
+    public static final String OWNER = "OWMER_NAME";
     private ByteArrayOutputStream ByteArray;
     private byte[] imageByte;
     public static final String DBNAME = "Login.db";
@@ -57,7 +58,7 @@ public class CarDataBase extends SQLiteOpenHelper {
                 TYPE + " TEXT, " +
                 PRICE + " INT, " +
                 IMAGE + " BLOB, " +
-                COL1 + " TEXT REFERENCES " + TABLENAME + "(" + COL1 + ")" +
+                OWNER + " TEXT REFERENCES " + TABLENAME + "(" + COL1 + ")" +
                 ")";
         sqLiteDatabase.execSQL(createCarTable);
 
@@ -91,7 +92,7 @@ public class CarDataBase extends SQLiteOpenHelper {
         cv.put(TYPE,car.getType());
         cv.put(PRICE,car.getPrice());
         cv.put(IMAGE,imageByte);
-        cv.put(COL1,car.getOwner_name());
+        cv.put(OWNER,car.getOwner_name());
 
         long insert = db.insert(CAR_TABLE,null,cv);
 
