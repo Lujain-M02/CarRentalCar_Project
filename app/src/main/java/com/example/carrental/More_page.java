@@ -12,10 +12,12 @@ import android.widget.TextView;
 
 public class More_page extends AppCompatActivity {
     Button btn_myCars;
+
+    Button btn_myRentalCars;
     ImageButton btn_logout;
 
     TextView tv_username;
-
+    ImageButton btn_back;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,9 +28,11 @@ public class More_page extends AppCompatActivity {
         String UserName=getIntent().getStringExtra("UserName");
 
         btn_myCars=findViewById(R.id.btn_myCars);
+        btn_myRentalCars=findViewById(R.id.btn_myRentalCars);
         btn_logout=findViewById(R.id.btn_logout);
         tv_username=findViewById(R.id.tv_username);
         tv_username.setText(UserName);
+        btn_back=findViewById(R.id.btn_back);
 
 
         btn_myCars.setOnClickListener(new View.OnClickListener() {
@@ -40,11 +44,29 @@ public class More_page extends AppCompatActivity {
             }
         });
 
+        btn_myRentalCars.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),My_Rental_Cars.class);
+                intent.putExtra( "UserName",UserName);
+                startActivity(intent);
+            }
+        });
+
 
         btn_logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),Home.class);
+                startActivity(intent);
+            }
+        });
+
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                intent.putExtra( "UserName",UserName);
                 startActivity(intent);
             }
         });

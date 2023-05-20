@@ -15,6 +15,9 @@
         android:theme="@style/Theme.CarRental"
         tools:targetApi="31">
         <activity
+            android:name=".My_Rental_Cars"
+            android:exported="false" />
+        <activity
             android:name=".View_page"
             android:exported="false" />
         <activity

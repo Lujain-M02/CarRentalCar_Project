@@ -43,7 +43,7 @@ public class My_Cars extends AppCompatActivity {
         BackToHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(),More_page.class);
                 intent.putExtra( "UserName",UserName);
                 startActivity(intent);
             }

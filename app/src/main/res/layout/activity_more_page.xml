@@ -12,12 +12,12 @@
         android:id="@+id/tv_Hello"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
         android:text="Hello"
         android:textColor="@color/black"
         android:textSize="30dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_back"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
@@ -56,4 +56,27 @@
         android:textSize="30dp"
         app:layout_constraintStart_toEndOf="@+id/tv_Hello"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_myRentalCars"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:drawableLeft="@drawable/rentalcar"
+        android:text="My Rental Cars"
+        android:textAlignment="textStart"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_myCars" />
+    <ImageButton
+        android:id="@+id/btn_back"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:backgroundTint="#00FFFFFF"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/arrow" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -49,8 +49,6 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
 
         //logged in username information
         UserName=getIntent().getStringExtra("UserName");
-        TextView textView=findViewById(R.id.textView);
-        textView.setText(UserName);
 
         dataBaseHelper = new CarDataBase(MainActivity.this);
         viewList=(ArrayList<Car>)dataBaseHelper.getEveryone();
@@ -120,6 +118,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         //Bitmap bitmap = BitmapFactory.decodeFile(viewList.get(position).getImage());
         viewList.get(position).getImage().compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
         byte[] byteArray = byteArrayOutputStream.toByteArray();
+
         intent.putExtra("carImage", byteArray);
 
         startActivity(intent);
