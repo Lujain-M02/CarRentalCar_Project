@@ -6,4 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".View_page">
 
+    <ImageButton
+        android:id="@+id/btn_back"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:backgroundTint="#00FFFFFF"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/arrow" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
