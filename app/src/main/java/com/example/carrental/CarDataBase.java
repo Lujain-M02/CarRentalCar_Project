@@ -138,10 +138,10 @@ public class CarDataBase extends SQLiteOpenHelper {
                 String CName = cursor.getString(1); //car name
                 int Cpassenger = cursor.getInt(2);//car number of passenger
                 String Ctype = cursor.getString(3);//car type
-                int Cprice = cursor.getInt(4);//car number of passenger
+                int Cprice = cursor.getInt(4);//car price
                 byte[] CimageByte=cursor.getBlob(5);//image in bytes
                 Bitmap Object= BitmapFactory.decodeByteArray(CimageByte,0,CimageByte.length);//convert byte array to bitmap
-                String Cowner_name = cursor.getString(6); //car name
+                String Cowner_name = cursor.getString(6); //car owner name
 
                 Car newCar = new Car(CID, CName, Cpassenger ,Ctype,Cprice,Object,Cowner_name);
                 returnList.add(newCar);
