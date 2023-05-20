@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -14,6 +16,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements RecyclerViewInterface{
@@ -110,7 +113,15 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         intent.putExtra( "carPassenger",viewList.get(position).getNumberOfPassenger());
         intent.putExtra( "carPrice",viewList.get(position).getPrice());
         intent.putExtra( "carOwnerName",viewList.get(position).getOwner_name());
+
+        //this lines to send image
         //intent.putExtra( "carImage",viewList.get(position).getImage());
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        //Bitmap bitmap = BitmapFactory.decodeFile(viewList.get(position).getImage());
+        viewList.get(position).getImage().compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+        byte[] byteArray = byteArrayOutputStream.toByteArray();
+        intent.putExtra("carImage", byteArray);
+
         startActivity(intent);
 
 

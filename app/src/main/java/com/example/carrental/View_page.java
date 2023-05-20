@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -21,6 +23,20 @@ public class View_page extends AppCompatActivity {
 
         btn_back=findViewById(R.id.btn_back);
         UserName=getIntent().getStringExtra("UserName");
+
+
+        //all the car information
+        Intent intent = getIntent();
+        int carID = intent.getIntExtra("carID", 0);
+        String carName = intent.getStringExtra("carName");
+        String carType = intent.getStringExtra("carType");
+        int carPassenger = intent.getIntExtra("carPassenger", 0);
+        double carPrice = intent.getIntExtra("carPrice", 0);
+        String carOwnerName = intent.getStringExtra("carOwnerName");
+
+        byte[] byteArray = intent.getByteArrayExtra("carImage");
+        Bitmap carImage = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+
 
 
 
