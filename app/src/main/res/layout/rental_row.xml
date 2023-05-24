@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <ImageView
+        android:id="@+id/myCar_sr_iv_cars"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:srcCompat="@mipmap/ic_launcher"
+        android:layout_marginStart="3dp"
+        />
+
+    <TextView
+        android:id="@+id/caRental_sr_CarName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_toEndOf="@id/myCar_sr_iv_cars"
+        android:text="TextView"
+        android:textSize="70px"
+        android:textColor="@color/black"
+        />
+
+    <Button
+        android:id="@+id/myCar_sr_retrun"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="10dp"
+        android:backgroundTint="#3C5C83"
+        android:shadowColor="#A6A6A6"
+        android:shadowDx="5"
+        android:shadowDy="4"
+        android:shadowRadius="4"
+        app:cornerRadius="50dp"
+        android:text="Return"
+        android:drawableTint="@color/white"
+        />
+
+
+</RelativeLayout>
