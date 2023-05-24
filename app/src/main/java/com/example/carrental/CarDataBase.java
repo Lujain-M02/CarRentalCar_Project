@@ -117,10 +117,16 @@ public class CarDataBase extends SQLiteOpenHelper {
 
 
     public Integer deleteOne(int id){
-        boolean flag;
         SQLiteDatabase db=getWritableDatabase();
         String ID= String.valueOf(id);
         return db.delete(CAR_TABLE , "ID = ?" , new String[]{ID});
+
+    }
+
+    public Integer ReturnOne(int id){
+        SQLiteDatabase db=getWritableDatabase();
+        String ID= String.valueOf(id);
+        return db.delete(RENTAL_APPLICATION_TABLE , "ID = ?" , new String[]{ID});
 
     }
 
@@ -182,9 +188,62 @@ public Boolean checkusername(String username) {
         else
             return false;
     }
-}
+
 //---------------- end user -------------------------------------------
 
 
+    public List<RentalApplication> getRentals(){
+        List<RentalApplication> returnList = new ArrayList<>();
+        // get data from database
+        String queryString = "Select * from "+ RENTAL_APPLICATION_TABLE;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(queryString, null);
+        if(cursor.moveToFirst()){
+            // loop through cursor results
+            do{
+                int ID = cursor.getInt(0); // ID
+                String RName = cursor.getString(1); //car name
+                int CID = cursor.getInt(0); // CAR ID
+
+                RentalApplication newRental = new RentalApplication(ID, RName, CID);
+               // returnList.add(newRental);
+            }while (cursor.moveToNext());
+        } else{
+            // nothing happens. no one is added.
+        }
+        //close
+        cursor.close();
+        db.close();
+        return returnList;
+    }
+
+    public Car getCarObject(int id){
+        Car newCar = null;
+        String queryString = "Select * from "+ CAR_TABLE + "Where" + CAR_ID + " = " + id;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(queryString, null);
+        if(cursor.moveToFirst()){
+            // loop through cursor results
+            do{
+                String CName = cursor.getString(1); //car name
+                int Cpassenger = cursor.getInt(2);//car number of passenger
+                String Ctype = cursor.getString(3);//car type
+                int Cprice = cursor.getInt(4);//car price
+                byte[] CimageByte=cursor.getBlob(5);//image in bytes
+                Bitmap Object= BitmapFactory.decodeByteArray(CimageByte,0,CimageByte.length);//convert byte array to bitmap
+                String Cowner_name = cursor.getString(6); //car owner name
+
+                newCar = new Car(id, CName, Cpassenger ,Ctype,Cprice,Object,Cowner_name);
+            }while (cursor.moveToNext());
+        }
+        //close
+        cursor.close();
+        db.close();
+        return newCar;
 
 
+    }
+
+
+
+}

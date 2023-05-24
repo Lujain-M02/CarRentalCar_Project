@@ -16,4 +16,14 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/arrow" />
 
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_MyCar"
+        android:layout_width="match_parent"
+        android:layout_height="650dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
