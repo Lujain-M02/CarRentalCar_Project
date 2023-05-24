@@ -49,7 +49,7 @@ public class My_Rental_Cars extends AppCompatActivity {
 
     public void getReturned(){
         List<RentalApplication> ViewList = new ArrayList<>();
-        for(int i=0;i<dataBaseHelper.getEveryone().size();i++){//this for loop to represent a cars that owned by the logged in user
+        for(int i=0;i<dataBaseHelper.getRentals().size();i++){//this for loop to represent a cars that owned by the logged in user
                 ViewList.add(dataBaseHelper.getRentals().get(i));
         }
         rentalAdapter=new Rental_Adapter((ArrayList<RentalApplication>) ViewList , this);

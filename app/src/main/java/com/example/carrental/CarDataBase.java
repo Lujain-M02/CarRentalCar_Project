@@ -203,7 +203,7 @@ public Boolean checkusername(String username) {
             do{
                 int ID = cursor.getInt(0); // ID
                 String RName = cursor.getString(1); //car name
-                int CID = cursor.getInt(0); // CAR ID
+                int CID = cursor.getInt(2); // CAR ID
 
                 RentalApplication newRental = new RentalApplication(ID, RName, CID);
                // returnList.add(newRental);
