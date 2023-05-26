@@ -29,6 +29,8 @@ public class CarDataBase extends SQLiteOpenHelper {
     public static final String TABLENAME = "users";
     public static final String COL1 = "username";
     public static final String COL2 = "password";
+    public static final String COL3= "email";//
+    public static final String COL4= "phone";//
 
 
     public static final String RENTAL_APPLICATION_TABLE = "RENTAL_APPLICATION";
@@ -52,7 +54,10 @@ public class CarDataBase extends SQLiteOpenHelper {
                 + PRICE + " INT, "
                 + IMAGE + " BLOB )";*/
 
-        String createUsersTable =  "create Table " + TABLENAME + "(" + COL1 + " TEXT primary key, " + COL2 + " TEXT)";
+        String createUsersTable =  "create Table " + TABLENAME + "(" + COL1 + " TEXT primary key, " +
+                COL2 + " TEXT, " +
+                COL3 + " TEXT, " +//
+                COL4 + " TEXT)";//
         sqLiteDatabase.execSQL(createUsersTable);
 
         String createCarTable = "CREATE TABLE " + CAR_TABLE + "(" +
@@ -161,11 +166,13 @@ public class CarDataBase extends SQLiteOpenHelper {
         return returnList;
     }
 //-----------------------------------------users----------
-public Boolean insertData(String username, String password){
+public Boolean insertData(String username, String password , String email , String phone){
     SQLiteDatabase MyDB = this.getWritableDatabase();
     ContentValues contentValues= new ContentValues();
     contentValues.put("username", username);
     contentValues.put("password", password);
+    contentValues.put("email", email);//
+    contentValues.put("phone", phone);//
     long result = MyDB.insert("users", null, contentValues);
     if(result==-1) return false;
     else
