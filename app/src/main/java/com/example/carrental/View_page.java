@@ -68,35 +68,53 @@ public class View_page extends AppCompatActivity {
         price_v.setText(String.valueOf(carPrice));
 
 
+        CarDataBase DB2 = new CarDataBase(View_page.this);
+        boolean isrenBefore = DB2.isRented(carID);
+
+        if(isrenBefore) {
+            btn_rent.setEnabled(false);
+        }
+
         btn_rent.setOnClickListener(new View.OnClickListener() {
+
+
             @Override
             public void onClick(View v) {
 
-                RentalApplication rent ;
-                CarDataBase DB1 = new CarDataBase(View_page.this);
-                Car car = DB1.getCarObject(carID);
-
-
+                if (!isrenBefore) {
+                    RentalApplication rent;
+                    CarDataBase DB1 = new CarDataBase(View_page.this);
+                    Car car = DB1.getCarObject(carID);
 
 
                     try {
                         //rent = new RentalApplication(1,car.getOwner_name(),carID);
-                        rent = new RentalApplication(1,View_page.this.UserName,carID);
+                        rent = new RentalApplication(1, View_page.this.UserName, carID);
+
+
                         //car type is int!!!!!!!!!!!!!!!
                     } catch (Exception e) {
-                        rent = new RentalApplication(1,View_page.this.UserName,carID);
+                        rent = new RentalApplication(1, View_page.this.UserName, carID);
                     }
+
                     CarDataBase DB2 = new CarDataBase(View_page.this);
-                    boolean success = DB2.rentCar(car,rent);
-                    //Toast.makeText(Add_Car.this, "mm: " + success, Toast.LENGTH_SHORT).show();
-                    Toast.makeText(View_page.this, success ? "the car has been added successfully" : "Error happened", Toast.LENGTH_SHORT).show();
+                    boolean isrenBefore = DB2.isRented(carID);
+
+                    if (!isrenBefore) {
+                        boolean success = DB2.rentCar(car, rent);
+                        //Toast.makeText(Add_Car.this, "mm: " + success, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(View_page.this, success ? "the car has been added successfully" : "Error happened", Toast.LENGTH_SHORT).show();
 
 
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        intent.putExtra("UserName", UserName);
+                        startActivity(intent);
+                    } else {
+                        btn_rent.setEnabled(false);
+                    }
 
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    intent.putExtra( "UserName",UserName);
-                    startActivity(intent);
 
+                }
             }
         });
 
@@ -114,4 +132,5 @@ public class View_page extends AppCompatActivity {
             }
         });
     }
+
 }

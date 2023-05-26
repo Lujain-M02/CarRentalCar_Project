@@ -273,5 +273,25 @@ public Boolean checkusername(String username) {
             return true;}
     }
 
+    //=====================check if the car is Rented===================
+    public boolean isRented(int id){
+        //Car newCar = null;
+        String queryString = "Select * from "+ RENTAL_APPLICATION_TABLE + " Where " + CAR_ID + " = " + id;
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(queryString, null);
+        if(cursor.getCount()>0){
+            return true;
+        }else{
+            return false;
+        }
+        //close
+        // cursor.close();
+        // db.close();
+
+
+
+
+    }
 
 }
