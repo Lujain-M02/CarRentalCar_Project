@@ -38,7 +38,7 @@ public class SignupActivity extends AppCompatActivity {
                 String ph = phone.getText().toString();
 
 
-                if (user.equals("") || pass.equals(""))
+                if (user.equals("") || pass.equals("") || em.equals("") || ph.equals(""))
                     Toast.makeText(SignupActivity.this, "Please enter all the fields", Toast.LENGTH_SHORT).show();
                 else{
 
