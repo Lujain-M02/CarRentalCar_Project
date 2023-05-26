@@ -72,8 +72,6 @@ public class View_page extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
-
                 RentalApplication rent ;
                 CarDataBase DB1 = new CarDataBase(View_page.this);
                 Car car = DB1.getCarObject(carID);

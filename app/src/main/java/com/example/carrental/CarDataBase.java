@@ -226,8 +226,9 @@ public Boolean checkusername(String username) {
 
     public Car getCarObject(int id){
         Car newCar = null;
-        String queryString = "Select * from "+ CAR_TABLE + " Where " + CAR_ID + " = " + id;
+        String queryString = "Select * from "+ CAR_TABLE + " Where " + ID + " = " + id;
         SQLiteDatabase db = this.getReadableDatabase();
+
         Cursor cursor = db.rawQuery(queryString, null);
         if(cursor.moveToFirst()){
             // loop through cursor results
@@ -246,6 +247,7 @@ public Boolean checkusername(String username) {
         //close
         cursor.close();
         db.close();
+
         return newCar;
 
 
