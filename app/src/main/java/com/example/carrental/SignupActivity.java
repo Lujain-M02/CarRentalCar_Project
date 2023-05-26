@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 public class SignupActivity extends AppCompatActivity {
 
-    EditText username, password;
+    EditText username, password , email , phone;
     Button signup, signin;
     CarDataBase DB;
     @SuppressLint("MissingInflatedId")
@@ -23,6 +23,8 @@ public class SignupActivity extends AppCompatActivity {
 
         username = (EditText) findViewById(R.id.username);
         password = (EditText) findViewById(R.id.password);
+        email =(EditText) findViewById(R.id.email);
+        phone = (EditText) findViewById(R.id.phone);
         signup = (Button) findViewById(R.id.btnsignup);
         signin = (Button) findViewById(R.id.btnsignin);
         DB = new CarDataBase(SignupActivity.this);
@@ -32,6 +34,8 @@ public class SignupActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String user = username.getText().toString();
                 String pass = password.getText().toString();
+                String em = email.getText().toString();
+                String ph = phone.getText().toString();
 
 
                 if (user.equals("") || pass.equals(""))
@@ -40,7 +44,7 @@ public class SignupActivity extends AppCompatActivity {
 
                         Boolean checkuser = DB.checkusername(user);
                         if(checkuser==false){
-                            Boolean insert = DB.insertData(user, pass);
+                            Boolean insert = DB.insertData(user, pass , em , ph);
                             if(insert==true){
                                 Toast.makeText(SignupActivity.this, "Registered successfully", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(getApplicationContext(),MainActivity.class);
