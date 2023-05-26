@@ -226,7 +226,7 @@ public Boolean checkusername(String username) {
 
     public Car getCarObject(int id){
         Car newCar = null;
-        String queryString = "Select * from "+ CAR_TABLE + "Where" + CAR_ID + " = " + id;
+        String queryString = "Select * from "+ CAR_TABLE + " Where " + CAR_ID + " = " + id;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(queryString, null);
         if(cursor.moveToFirst()){
@@ -251,6 +251,25 @@ public Boolean checkusername(String username) {
 
     }
 
+//==================renCar==========================
+    public boolean rentCar(Car car, RentalApplication rent){
+        SQLiteDatabase db=getWritableDatabase();
+
+        ContentValues cv=new ContentValues();
+
+        cv.put(CAR_ID,car.getId());
+        //أتأكد لو أحتاج اسم الاونر ولالا
+        cv.put(OWNER,car.getOwner_name());
+        cv.put(RENTER_NAME,rent.getRenter_name());
+
+       long insert = db.insert("RENTAL_APPLICATION",null,cv);
+        //long insert = db.insert(RENTAL_APPLICATION_TABLE,null,cv);
+
+        if (insert==-1)
+            return false;
+        else{
+            return true;}
+    }
 
 
 }

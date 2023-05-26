@@ -1,5 +1,12 @@
 package com.example.carrental;
 
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 public class RentalApplication {
     private int id ;
     private String renter_name;
@@ -35,6 +42,7 @@ public class RentalApplication {
     this.renter_name = renter_name;
     this.car_id = car_id;
 }
+
 
 
 
