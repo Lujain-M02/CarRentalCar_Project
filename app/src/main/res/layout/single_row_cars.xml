@@ -24,6 +24,10 @@
         android:text="TextView"
         android:textSize="70px"
         android:textColor="@color/black"
+        android:shadowDx="7"
+        android:shadowDy="6"
+        android:shadowRadius="4"
+        android:shadowColor="#A6A6A6"
         />
 
 
