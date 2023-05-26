@@ -259,10 +259,10 @@ public Boolean checkusername(String username) {
 
         ContentValues cv=new ContentValues();
 
-        cv.put(CAR_ID,car.getId());
+        cv.put(ID,car.getId());
         //أتأكد لو أحتاج اسم الاونر ولالا
-        cv.put(OWNER,car.getOwner_name());
         cv.put(RENTER_NAME,rent.getRenter_name());
+        cv.put(CAR_ID,car.getId());
 
        long insert = db.insert("RENTAL_APPLICATION",null,cv);
         //long insert = db.insert(RENTAL_APPLICATION_TABLE,null,cv);
