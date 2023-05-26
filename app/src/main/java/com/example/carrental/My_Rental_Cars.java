@@ -20,6 +20,7 @@ public class My_Rental_Cars extends AppCompatActivity {
     Rental_Adapter rentalAdapter;
     RecyclerView rv_MyCar;
     CarDataBase dataBaseHelper;
+    String UserName;
 
 
     @SuppressLint("MissingInflatedId")
@@ -30,8 +31,8 @@ public class My_Rental_Cars extends AppCompatActivity {
 
         btn_back=findViewById(R.id.btn_back);
         rv_MyCar=findViewById(R.id.rv_MyCar);
-        String UserName=getIntent().getStringExtra("UserName");
-        dataBaseHelper = new CarDataBase(this);
+        UserName=getIntent().getStringExtra("UserName");
+        dataBaseHelper = new CarDataBase(My_Rental_Cars.this);
         getReturned();
 
 
@@ -49,10 +50,11 @@ public class My_Rental_Cars extends AppCompatActivity {
 
     public void getReturned(){
         List<RentalApplication> ViewList = new ArrayList<>();
-        for(int i=0;i<dataBaseHelper.getRentals().size();i++){//this for loop to represent a cars that owned by the logged in user
-                ViewList.add(dataBaseHelper.getRentals().get(i));
+        for(int i=0;i<dataBaseHelper.getRentals().size();i++){
+            if(dataBaseHelper.getRentals().get(i).getRenter_name().equals(UserName)){
+                ViewList.add(dataBaseHelper.getRentals().get(i));}
         }
-        rentalAdapter=new Rental_Adapter((ArrayList<RentalApplication>) ViewList , this);
+        rentalAdapter=new Rental_Adapter((ArrayList<RentalApplication>) ViewList , My_Rental_Cars.this);
 
         //MyCarAdapterObject=new MyCar_rv_Adapter((ArrayList<Car>) dataBaseHelper.getEveryone() , My_Cars.this);
         rv_MyCar.setHasFixedSize(true);

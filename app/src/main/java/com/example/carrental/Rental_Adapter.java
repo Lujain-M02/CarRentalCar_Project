@@ -42,10 +42,9 @@ public class Rental_Adapter extends RecyclerView.Adapter<Rental_Adapter.rvMyCarV
         rentObject=CarListToReturn.get(position); // position to be return from the array
         /// to get car information
         Car carObject = carDataBase.getCarObject(rentObject.getCar_id());
-        holder.myCar_sr_carName.setText(carObject.getName());
-        holder.myCar_sr_iv_cars.setImageBitmap(carObject.getImage());
 
-
+            holder.caRental_sr_CarName.setText(carObject.getName());
+            holder.myCar_sr_iv_cars.setImageBitmap(carObject.getImage());
 
     }
 
@@ -57,14 +56,14 @@ public class Rental_Adapter extends RecyclerView.Adapter<Rental_Adapter.rvMyCarV
 
     public class rvMyCarViewHolderClass extends RecyclerView.ViewHolder {
 
-        public ImageView myCar_sr_iv_cars;
-        public BreakIterator myCar_sr_carName;
-        TextView caRental_sr_RenterName;
+        ImageView myCar_sr_iv_cars;
+        TextView caRental_sr_CarName;
         Button myCar_sr_retrun;
 
         public rvMyCarViewHolderClass(@NonNull View itemView) {
             super(itemView);
-            caRental_sr_RenterName = itemView.findViewById(R.id.caRental_sr_CarName);
+            caRental_sr_CarName = itemView.findViewById(R.id.caRental_sr_CarName);
+            myCar_sr_iv_cars = itemView.findViewById(R.id.myCar_sr_iv_cars);
             myCar_sr_retrun = itemView.findViewById(R.id.myCar_sr_retrun);
 
             itemView.setClickable(true);

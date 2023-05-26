@@ -209,11 +209,11 @@ public Boolean checkusername(String username) {
             // loop through cursor results
             do{
                 int ID = cursor.getInt(0); // ID
-                String RName = cursor.getString(1); //car name
+                String RName = cursor.getString(1); //renter name
                 int CID = cursor.getInt(2); // CAR ID
 
                 RentalApplication newRental = new RentalApplication(ID, RName, CID);
-               // returnList.add(newRental);
+                returnList.add(newRental);
             }while (cursor.moveToNext());
         } else{
             // nothing happens. no one is added.
