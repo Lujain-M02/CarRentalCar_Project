@@ -9,11 +9,21 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.MultiAutoCompleteTextView;
+import android.widget.TextView;
 
 public class View_page extends AppCompatActivity {
 
     ImageButton btn_back;
     String UserName;
+    ImageView car_image1;
+    TextView carname_v;
+    TextView passenger_v;
+    TextView type_v ;
+    TextView price_v ;
+
+
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -23,6 +33,10 @@ public class View_page extends AppCompatActivity {
 
         btn_back=findViewById(R.id.btn_back);
         UserName=getIntent().getStringExtra("UserName");
+        //carname_v.findViewById(R.id.carname_v);
+
+
+
 
 
         //all the car information
@@ -36,6 +50,19 @@ public class View_page extends AppCompatActivity {
 
         byte[] byteArray = intent.getByteArrayExtra("carImage");
         Bitmap carImage = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+
+        car_image1=findViewById(R.id.car_image1);
+        car_image1.setImageBitmap(carImage);
+        carname_v=findViewById(R.id.carname_v);
+        carname_v.setText(carName);
+        passenger_v=findViewById(R.id.passenger_v);
+        passenger_v.setText(String.valueOf(carPassenger));
+        type_v=findViewById(R.id.type_v);
+        type_v.setText(carType);
+        price_v=findViewById(R.id.price_v);
+        price_v.setText(String.valueOf(carPrice));
+
+
 
 
 
