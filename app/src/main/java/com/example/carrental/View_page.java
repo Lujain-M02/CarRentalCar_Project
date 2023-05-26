@@ -80,10 +80,11 @@ public class View_page extends AppCompatActivity {
 
 
                     try {
-                        rent = new RentalApplication(1,car.getOwner_name(),carID);
+                        //rent = new RentalApplication(1,car.getOwner_name(),carID);
+                        rent = new RentalApplication(1,View_page.this.UserName,carID);
                         //car type is int!!!!!!!!!!!!!!!
                     } catch (Exception e) {
-                        rent = new RentalApplication(1,car.getOwner_name(),carID);
+                        rent = new RentalApplication(1,View_page.this.UserName,carID);
                     }
                     CarDataBase DB2 = new CarDataBase(View_page.this);
                     boolean success = DB2.rentCar(car,rent);

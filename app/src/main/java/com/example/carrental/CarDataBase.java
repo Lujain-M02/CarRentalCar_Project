@@ -259,7 +259,7 @@ public Boolean checkusername(String username) {
 
         ContentValues cv=new ContentValues();
 
-        cv.put(ID,car.getId());
+        //cv.put(ID,car.getId());
         //أتأكد لو أحتاج اسم الاونر ولالا
         cv.put(RENTER_NAME,rent.getRenter_name());
         cv.put(CAR_ID,car.getId());
