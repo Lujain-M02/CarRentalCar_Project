@@ -24,8 +24,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="160dp"
-        android:layout_marginBottom="85dp"
         android:backgroundTint="#3C5C83"
         android:drawableTint="@color/white"
         android:shadowColor="#A6A6A6"
@@ -35,7 +33,9 @@
         android:text="Rent"
         app:cornerRadius="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/price_v" />
 
     <ImageButton
         android:id="@+id/btn_back"
@@ -49,11 +49,12 @@
 
     <ImageView
         android:id="@+id/car_image1"
-        android:layout_width="270dp"
-        android:layout_height="280dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="68dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6"
         app:srcCompat="@mipmap/ic_launcher" />
 
@@ -61,7 +62,7 @@
         android:id="@+id/carname_v"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="41dp"
+        android:layout_marginTop="39dp"
         android:text="TextView"
         android:textColor="#000000"
         android:textSize="20sp"
@@ -72,20 +73,20 @@
         android:id="@+id/passenger_v"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="88dp"
         android:inputType="number|text"
         android:numeric="signed|integer|decimal"
         android:text="TextView"
+        android:layout_marginTop="18dp"
         android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/textView9"
-        app:layout_constraintTop_toBottomOf="@+id/car_image1" />
+        app:layout_constraintTop_toBottomOf="@+id/carname_v" />
 
     <TextView
         android:id="@+id/type_v"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="13dp"
         android:text="TextView"
         android:textColor="#000000"
         android:textSize="20sp"
@@ -156,6 +157,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/car_image1" />
 
+    <TextView
+        android:id="@+id/tv_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Sorry you can't rent the car at the moment"
+        app:layout_constraintBottom_toTopOf="@+id/rentButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/black"
+        android:visibility="invisible"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

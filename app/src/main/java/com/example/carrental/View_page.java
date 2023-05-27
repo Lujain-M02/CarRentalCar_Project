@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.MultiAutoCompleteTextView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.view.View;
 
 public class View_page extends AppCompatActivity {
 
@@ -25,6 +26,7 @@ public class View_page extends AppCompatActivity {
     TextView passenger_v;
     TextView type_v ;
     TextView price_v ;
+    TextView tv_msg;
 
 
 
@@ -39,6 +41,7 @@ public class View_page extends AppCompatActivity {
         UserName=getIntent().getStringExtra("UserName");
         btn_rent=findViewById(R.id.rentButton);
         //carname_v.findViewById(R.id.carname_v);
+        tv_msg=findViewById(R.id.tv_msg);
 
 
 
@@ -73,6 +76,8 @@ public class View_page extends AppCompatActivity {
 
         if(isrenBefore) {
             btn_rent.setEnabled(false);
+            btn_rent.getBackground().setAlpha(64);
+            tv_msg.setVisibility(View.VISIBLE);
         }
 
         btn_rent.setOnClickListener(new View.OnClickListener() {
@@ -103,10 +108,10 @@ public class View_page extends AppCompatActivity {
                     if (!isrenBefore) {
                         boolean success = DB2.rentCar(car, rent);
                         //Toast.makeText(Add_Car.this, "mm: " + success, Toast.LENGTH_SHORT).show();
-                        Toast.makeText(View_page.this, success ? "the car has been added successfully" : "Error happened", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(View_page.this, success ? "you have rented the car" : "Error happened", Toast.LENGTH_SHORT).show();
 
 
-                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), rent_conf.class);
                         intent.putExtra("UserName", UserName);
                         startActivity(intent);
                     } else {
