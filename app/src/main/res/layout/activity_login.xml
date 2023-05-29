@@ -43,7 +43,7 @@
         android:shadowDx="5"
         android:shadowDy="4"
         android:shadowRadius="4"
-        android:text="Sign in"
+        android:text="Log in"
         app:cornerRadius="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
