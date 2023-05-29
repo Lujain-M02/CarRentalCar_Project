@@ -1,5 +1,6 @@
 package com.example.carrental;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -254,7 +255,7 @@ public Boolean checkusername(String username) {
     }
 
 //==================renCar==========================
-    public boolean rentCar(Car car, RentalApplication rent){
+    public boolean rentCar(RentalApplication rent){
         SQLiteDatabase db=getWritableDatabase();
 
         ContentValues cv=new ContentValues();
@@ -262,7 +263,7 @@ public Boolean checkusername(String username) {
         //cv.put(ID,car.getId());
         //أتأكد لو أحتاج اسم الاونر ولالا
         cv.put(RENTER_NAME,rent.getRenter_name());
-        cv.put(CAR_ID,car.getId());
+        cv.put(CAR_ID,rent.getCar_id());
 
        long insert = db.insert("RENTAL_APPLICATION",null,cv);
         //long insert = db.insert(RENTAL_APPLICATION_TABLE,null,cv);
@@ -289,9 +290,27 @@ public Boolean checkusername(String username) {
         // cursor.close();
         // db.close();
 
-
-
-
     }
+
+//=====================check if the car is yours===================
+   /* public boolean isYours(String name,String id){
+        //Car newCar = null;
+        //String queryString = "Select * from "+ CAR_TABLE + " Where " + ID + " = " + id + " AND " + OWNER + " = " + name;
+
+        //String queryString = "Select * from " + CAR_TABLE + " Where " + OWNER + " = " + name + " AND " + ID + " = " + id;
+        SQLiteDatabase db = this.getReadableDatabase();
+        //Cursor cursor = db.rawQuery("Select * from "+ CAR_TABLE + " Where " + OWNER + " = " + name, null);
+        Cursor cursor = db.rawQuery("Select * from CAR_TABLE where OWMER_NAME = ? and ID = ?", new String[] {name,id});
+
+        if(cursor.getCount()>0){
+            return true;
+        }else{
+            return false;
+        }
+        //close
+        // cursor.close();
+        // db.close();
+
+    }*/
 
 }

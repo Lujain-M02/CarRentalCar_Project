@@ -47,6 +47,7 @@ public class View_page extends AppCompatActivity {
         //all the car information
         Intent intent = getIntent();
         int carID = intent.getIntExtra("carID", 0);
+        String ScarID = intent.getStringExtra("carID");
         String carName = intent.getStringExtra("carName");
         String carType = intent.getStringExtra("carType");
         int carPassenger = intent.getIntExtra("carPassenger", 0);
@@ -69,9 +70,13 @@ public class View_page extends AppCompatActivity {
 
 
         CarDataBase DB2 = new CarDataBase(View_page.this);
+        //boolean yours = DB2.isYours(carOwnerName,ScarID);
         boolean isrenBefore = DB2.isRented(carID);
 
-        if(isrenBefore) {
+        /*if(yours){
+            btn_rent.setVisibility(View.INVISIBLE);
+            Toast.makeText(View_page.this, yours ? "You can't rent your car!!":"", Toast.LENGTH_SHORT).show();
+        }else*/ if(isrenBefore) {
             btn_rent.setEnabled(false);
         }
 
@@ -84,7 +89,7 @@ public class View_page extends AppCompatActivity {
                 if (!isrenBefore) {
                     RentalApplication rent;
                     CarDataBase DB1 = new CarDataBase(View_page.this);
-                    Car car = DB1.getCarObject(carID);
+
 
 
                     try {
@@ -101,7 +106,7 @@ public class View_page extends AppCompatActivity {
                     boolean isrenBefore = DB2.isRented(carID);
 
                     if (!isrenBefore) {
-                        boolean success = DB2.rentCar(car, rent);
+                        boolean success = DB2.rentCar(rent);
                         //Toast.makeText(Add_Car.this, "mm: " + success, Toast.LENGTH_SHORT).show();
                         Toast.makeText(View_page.this, success ? "the car has been added successfully" : "Error happened", Toast.LENGTH_SHORT).show();
 
