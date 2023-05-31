@@ -55,8 +55,6 @@ public class My_Rental_Cars extends AppCompatActivity {
                 ViewList.add(dataBaseHelper.getRentals().get(i));}
         }
         rentalAdapter=new Rental_Adapter((ArrayList<RentalApplication>) ViewList , My_Rental_Cars.this);
-
-        //MyCarAdapterObject=new MyCar_rv_Adapter((ArrayList<Car>) dataBaseHelper.getEveryone() , My_Cars.this);
         rv_MyCar.setHasFixedSize(true);
         rv_MyCar.setLayoutManager(new LinearLayoutManager(this));
         rv_MyCar.setAdapter(rentalAdapter);
