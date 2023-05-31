@@ -85,7 +85,6 @@ public class Rental_Adapter extends RecyclerView.Adapter<Rental_Adapter.rvMyCarV
                     builder.setTitle("Confirm Returning");
                     builder.setMessage("Are you sure you want to return this car?");
                     builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-
                         public void onClick(DialogInterface dialog, int which) {
 
 
