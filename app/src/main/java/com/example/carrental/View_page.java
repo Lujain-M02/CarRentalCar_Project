@@ -45,20 +45,26 @@ public class View_page extends AppCompatActivity {
 
 
 
-
-
         //all the car information
         Intent intent = getIntent();
         int carID = intent.getIntExtra("carID", 0);
-        //String ScarID = intent.getStringExtra("carID");
-        String carName = intent.getStringExtra("carName");
-        String carType = intent.getStringExtra("carType");
-        int carPassenger = intent.getIntExtra("carPassenger", 0);
-        double carPrice = intent.getIntExtra("carPrice", 0);//غيرته لانجر
-        String carOwnerName = intent.getStringExtra("carOwnerName");
+        //String ScarID = intent.getStringExtra("carID");/////no need
+        //String carName = intent.getStringExtra("carName");
+        //String carType = intent.getStringExtra("carType");
+        //int carPassenger = intent.getIntExtra("carPassenger", 0);
+        //double carPrice = intent.getIntExtra("carPrice", 0);//غيرته لانجر
+        //String carOwnerName = intent.getStringExtra("carOwnerName");
 
-        byte[] byteArray = intent.getByteArrayExtra("carImage");
-        Bitmap carImage = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+        //byte[] byteArray = intent.getByteArrayExtra("carImage");
+        //Bitmap carImage = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+
+        CarDataBase car= new CarDataBase(View_page.this);
+        Car viewCar=car.getCarObject(carID);
+        String carName=viewCar.getName();
+        String carType=viewCar.getType();
+        int carPassenger=viewCar.getNumberOfPassenger();
+        double carPrice=viewCar.getPrice();
+        Bitmap carImage=viewCar.getImage();
 
         car_image1=findViewById(R.id.car_image1);
         car_image1.setImageBitmap(carImage);
