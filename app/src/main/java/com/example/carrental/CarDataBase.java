@@ -125,7 +125,9 @@ public class CarDataBase extends SQLiteOpenHelper {
     public Integer deleteOne(int id){
         SQLiteDatabase db=getWritableDatabase();
         String ID= String.valueOf(id);
+        if(isRented(id) == false)
         return db.delete(CAR_TABLE , "ID = ?" , new String[]{ID});
+        return null;
 
     }
 
