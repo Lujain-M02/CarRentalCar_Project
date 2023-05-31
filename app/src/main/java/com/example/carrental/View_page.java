@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.MultiAutoCompleteTextView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.view.View;
 
 public class View_page extends AppCompatActivity {
 
@@ -25,6 +26,7 @@ public class View_page extends AppCompatActivity {
     TextView passenger_v;
     TextView type_v ;
     TextView price_v ;
+    TextView tv_msg;
 
 
 
@@ -39,22 +41,30 @@ public class View_page extends AppCompatActivity {
         UserName=getIntent().getStringExtra("UserName");
         btn_rent=findViewById(R.id.rentButton);
         //carname_v.findViewById(R.id.carname_v);
-
-
+        tv_msg=findViewById(R.id.tv_msg);
 
 
 
         //all the car information
         Intent intent = getIntent();
         int carID = intent.getIntExtra("carID", 0);
-        String carName = intent.getStringExtra("carName");
-        String carType = intent.getStringExtra("carType");
-        int carPassenger = intent.getIntExtra("carPassenger", 0);
-        double carPrice = intent.getIntExtra("carPrice", 0);//غيرته لانجر
-        String carOwnerName = intent.getStringExtra("carOwnerName");
+        //String ScarID = intent.getStringExtra("carID");/////no need
+        //String carName = intent.getStringExtra("carName");
+        //String carType = intent.getStringExtra("carType");
+        //int carPassenger = intent.getIntExtra("carPassenger", 0);
+        //double carPrice = intent.getIntExtra("carPrice", 0);//غيرته لانجر
+        //String carOwnerName = intent.getStringExtra("carOwnerName");
 
-        byte[] byteArray = intent.getByteArrayExtra("carImage");
-        Bitmap carImage = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+        //byte[] byteArray = intent.getByteArrayExtra("carImage");
+        //Bitmap carImage = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+
+        CarDataBase car= new CarDataBase(View_page.this);
+        Car viewCar=car.getCarObject(carID);
+        String carName=viewCar.getName();
+        String carType=viewCar.getType();
+        int carPassenger=viewCar.getNumberOfPassenger();
+        double carPrice=viewCar.getPrice();
+        Bitmap carImage=viewCar.getImage();
 
         car_image1=findViewById(R.id.car_image1);
         car_image1.setImageBitmap(carImage);
@@ -69,10 +79,16 @@ public class View_page extends AppCompatActivity {
 
 
         CarDataBase DB2 = new CarDataBase(View_page.this);
+        //boolean yours = DB2.isYours(carOwnerName,ScarID);
         boolean isrenBefore = DB2.isRented(carID);
 
-        if(isrenBefore) {
+        /*if(yours){
+            btn_rent.setVisibility(View.INVISIBLE);
+            Toast.makeText(View_page.this, yours ? "You can't rent your car!!":"", Toast.LENGTH_SHORT).show();
+        }else*/ if(isrenBefore) {
             btn_rent.setEnabled(false);
+            btn_rent.getBackground().setAlpha(64);
+            tv_msg.setVisibility(View.VISIBLE);
         }
 
         btn_rent.setOnClickListener(new View.OnClickListener() {
@@ -84,7 +100,7 @@ public class View_page extends AppCompatActivity {
                 if (!isrenBefore) {
                     RentalApplication rent;
                     CarDataBase DB1 = new CarDataBase(View_page.this);
-                    Car car = DB1.getCarObject(carID);
+
 
 
                     try {
@@ -101,12 +117,12 @@ public class View_page extends AppCompatActivity {
                     boolean isrenBefore = DB2.isRented(carID);
 
                     if (!isrenBefore) {
-                        boolean success = DB2.rentCar(car, rent);
+                        boolean success = DB2.rentCar(rent);
                         //Toast.makeText(Add_Car.this, "mm: " + success, Toast.LENGTH_SHORT).show();
-                        Toast.makeText(View_page.this, success ? "the car has been added successfully" : "Error happened", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(View_page.this, success ? "you have rented the car" : "Error happened", Toast.LENGTH_SHORT).show();
 
 
-                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), rent_conf.class);
                         intent.putExtra("UserName", UserName);
                         startActivity(intent);
                     } else {

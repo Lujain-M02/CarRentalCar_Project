@@ -106,20 +106,20 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         Intent intent = new Intent(getApplicationContext(),View_page.class);
         intent.putExtra( "UserName",UserName);
         intent.putExtra( "carID",viewList.get(position).getId());
-        intent.putExtra( "carName",viewList.get(position).getName());
-        intent.putExtra( "carType",viewList.get(position).getType());
-        intent.putExtra( "carPassenger",viewList.get(position).getNumberOfPassenger());
-        intent.putExtra( "carPrice",viewList.get(position).getPrice());
-        intent.putExtra( "carOwnerName",viewList.get(position).getOwner_name());
+        //intent.putExtra( "carName",viewList.get(position).getName());
+        //intent.putExtra( "carType",viewList.get(position).getType());
+        //intent.putExtra( "carPassenger",viewList.get(position).getNumberOfPassenger());
+        //intent.putExtra( "carPrice",viewList.get(position).getPrice());
+        //intent.putExtra( "carOwnerName",viewList.get(position).getOwner_name());
 
         //this lines to send image
         //intent.putExtra( "carImage",viewList.get(position).getImage());
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        //ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         //Bitmap bitmap = BitmapFactory.decodeFile(viewList.get(position).getImage());
-        viewList.get(position).getImage().compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
-        byte[] byteArray = byteArrayOutputStream.toByteArray();
+        //viewList.get(position).getImage().compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+        //byte[] byteArray = byteArrayOutputStream.toByteArray();
 
-        intent.putExtra("carImage", byteArray);
+        //intent.putExtra("carImage", byteArray);
 
         startActivity(intent);
 

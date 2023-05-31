@@ -23,8 +23,8 @@
 
     <EditText
         android:id="@+id/email"
-        android:layout_width="389dp"
-        android:layout_height="46dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:drawableLeft="@drawable/ic_email"
         android:hint="Email"
@@ -34,8 +34,8 @@
 
     <EditText
         android:id="@+id/phone"
-        android:layout_width="390dp"
-        android:layout_height="44dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:drawableLeft="@drawable/ic_phon"
         android:hint="Phone number"
@@ -48,7 +48,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/username"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="20dp"
         android:drawableLeft="@drawable/pass"
         android:hint="Password"
         app:layout_constraintEnd_toEndOf="parent"
