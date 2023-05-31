@@ -50,7 +50,7 @@ public class View_page extends AppCompatActivity {
         //all the car information
         Intent intent = getIntent();
         int carID = intent.getIntExtra("carID", 0);
-        String ScarID = intent.getStringExtra("carID");
+        //String ScarID = intent.getStringExtra("carID");
         String carName = intent.getStringExtra("carName");
         String carType = intent.getStringExtra("carType");
         int carPassenger = intent.getIntExtra("carPassenger", 0);
