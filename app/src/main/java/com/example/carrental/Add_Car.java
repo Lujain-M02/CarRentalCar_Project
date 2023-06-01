@@ -72,16 +72,16 @@ public class Add_Car extends AppCompatActivity {
 
 
 
-                if(CarName.equals("")) {
-                    Toast.makeText(Add_Car.this, "Please enter the Care Name", Toast.LENGTH_SHORT).show();
-                }else if (PassNum.equals("")) {
+                if(CarName.equals("") || PassNum.equals("") || type.equals("") || price.equals("") || ImageToStore==null) {
+                    Toast.makeText(Add_Car.this, "Please enter all the fields", Toast.LENGTH_SHORT).show();
+                /*}else if (PassNum.equals("")) {
                     Toast.makeText(Add_Car.this, "Please enter the Number of Passenger", Toast.LENGTH_SHORT).show();
                 } else if (type.equals("")) {
                     Toast.makeText(Add_Car.this, "Please enter the Type of the car", Toast.LENGTH_SHORT).show();
                 }else if (price.equals("")) {
                     Toast.makeText(Add_Car.this, "Please enter the Price of the car", Toast.LENGTH_SHORT).show();
                 }else if (ImageToStore==null) {
-                    Toast.makeText(Add_Car.this, "Please upload image", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Add_Car.this, "Please upload image", Toast.LENGTH_SHORT).show();*/
                 }else {
 
 
