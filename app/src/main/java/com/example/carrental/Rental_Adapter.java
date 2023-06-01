@@ -51,7 +51,6 @@ public class Rental_Adapter extends RecyclerView.Adapter<Rental_Adapter.rvMyCarV
             }
             else{
                 intent = new Intent(context, MainActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 context.startActivity(intent);
                 Toast.makeText(context, "List is empty", Toast.LENGTH_SHORT).show();
             }
@@ -86,7 +85,6 @@ public class Rental_Adapter extends RecyclerView.Adapter<Rental_Adapter.rvMyCarV
                     builder.setTitle("Confirm Returning");
                     builder.setMessage("Are you sure you want to return this car?");
                     builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-
                         public void onClick(DialogInterface dialog, int which) {
 
 

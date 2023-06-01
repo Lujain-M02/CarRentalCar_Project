@@ -64,44 +64,55 @@ public class MyCar_rv_Adapter extends RecyclerView.Adapter<MyCar_rv_Adapter.rvMy
             myCar_sr_delete = itemView.findViewById(R.id.myCar_sr_delete);
 
             itemView.setClickable(true);
-            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+
 
             myCar_sr_delete.setOnClickListener(new View.OnClickListener() {
+
+
                 @Override
                 public void onClick(View view) {
 
-                builder.setTitle("Confirm Delete");
-                builder.setMessage("Are you sure you want to delete this car?");
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    builder.setTitle("Confirm Delete");
+                    builder.setMessage("Are you sure you want to delete this car?");
+
+                    builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    });
 
 
-                 id = getAdapterPosition();
-                 co = CarListToDelete.get(id);
-                 CarListToDelete.remove(id); // id here represent the index
-                 if(carDataBase.deleteOne(co.getId()) > 0)
-                        Toast.makeText(context, "Delete successfully", Toast.LENGTH_SHORT).show();
-                 else
-                        Toast.makeText(context, "Could not be deleted", Toast.LENGTH_SHORT).show();
 
-                 notifyItemRemoved(id);
-                 notifyDataSetChanged();
 
-                }
-            });
-
-                        builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-                            @Override
+                        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                            }
-                        });
+
+                                    id = getAdapterPosition();
+                                    co = CarListToDelete.get(id);
+                                    if((carDataBase.deleteOne(co.getId()) != null)){
+
+                                       if ((carDataBase.deleteOne(co.getId()) >= 0)) {
+                                       Toast.makeText(context, "Delete successfully", Toast.LENGTH_SHORT).show();
+                                       CarListToDelete.remove(id); // id here represent the index
+                                       notifyItemRemoved(id);
+                                       notifyDataSetChanged();
+
+                                    }else
+                                    Toast.makeText(context, "Could not be deleted", Toast.LENGTH_SHORT).show();
+                            }     else{
+                                        myCar_sr_delete.setEnabled(false);
+                                        Toast.makeText(context, "Could not be deleted , car is rented", Toast.LENGTH_SHORT).show();}
+                        }});
 
                     AlertDialog dialog = builder.create();
                     dialog.show();
+
                     }});
+                    }
 
 
 
 
-        }}}
+        }}
 
