@@ -1,4 +1,4 @@
-# CarRentalCar_Project
+# CarRental_Project
 - "Monjid" car renting system   
 - android mobile application developed using java with basic CRUD operations and recycler view  
 - the user can add, delete, rent, and return a car  
@@ -40,8 +40,8 @@ Description:
 ![image](https://github.com/Lujain-M02/CarRentalCar_Project/assets/119123675/c7420db8-26e2-4bf4-b762-a94cc5a8c16e)
 
 Description:  
-1 Input filed for User Name
-2 Input filed for Password  
+1 Input filed for User Name  
+2 Input filed for Password    
 3 LOG IN button transfer the user to main page  
 
 ### 3. Signup page
@@ -49,8 +49,8 @@ Description:
 ![image](https://github.com/Lujain-M02/CarRentalCar_Project/assets/119123675/6c121db0-548a-46eb-bc0e-afda8c891612)
 
 Description:  
-1	Input filed for User Name
-2	Input filed for Password  
+1	Input filed for User Name  
+2	Input filed for Password    
 3	Input filed for Email  
 4	Input filed for Phone number  
 5	SIGN UP button transfer the user to main page  
@@ -115,7 +115,7 @@ Description:
 1	Button to direct the user to the previse page “more page”  
 2	Car name and image  
 3	button to delete the car  
-4	When "CANCL" is clicked, it will not complete the car delete process  
+4	When "CANCEL" is clicked, it will not complete the car delete process  
 5	When "YES" is clicked it will delete the car  
 
 ### 10.	My rental cars page
